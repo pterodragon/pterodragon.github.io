@@ -948,24 +948,24 @@ By equality of mixed deriatives, real and imaginary parts of analytic functions 
 
 Basic problem:
 $$
-\Delta u = f, \quad \bf{x} \in D, \\
-u = h \quad \text{or} \quad \frac{\partial u}{\partial n} =h \quad \text{or} \quad \frac{\partial u}{\partial n}+au=h, \quad \bf{x} \in\partial D
+\Delta u = f, \quad \mathbf{x} \in D, \\
+u = h \quad \text{or} \quad \frac{\partial u}{\partial n} =h \quad \text{or} \quad \frac{\partial u}{\partial n}+au=h, \quad \mathbf{x} \in\partial D
 $$
 
 ### Maximum principle
 
 Let $D$ be a connected bounded open set (in 2D or 3D space). $u$ is a harmonic function in $D$ that is continuous on $\overline{D} = D \cup\partial D$ $\Rightarrow$ maximum and minimum of $u$ are attained on $\partial D$ and no where inside unless when $u$ is constant
 
-Max/Min existence on boundary is proven by 2nd derivative test and considering $v(\bf{x})=u(\bf{x}) + \epsilon|\bf{x}|^2, \epsilon > 0$. Absence of min/max inside -> see 6.3
+Max/Min existence on boundary is proven by 2nd derivative test and considering $v(\mathbf{x})=u(\mathbf{x}) + \epsilon|\mathbf{x}|^2, \epsilon > 0$. Absence of min/max inside -> see 6.3
 
 ### Uniqueness of Dirichlet problem
 Proven by letting two solutions $u, v$ and let $w = u - v$, and use the maximum principle
 
 ### Invariance in 2 dimensions
 $$
-\Delta u(\bf{x})=\Delta u(\bf{x}')
+\Delta u(\mathbf{x})=\Delta u(\mathbf{x}')
 $$
-for $\bf{x}'$ being a translation or rotation of $\bf{x}$
+for $\mathbf{x}'$ being a translation or rotation of $\mathbf{x}$
 
 By the rotational invariance of the 2D laplacian operator, by letting $x = r\cos\theta, y = r\sin\theta$, the transformation has the Jacobian matrix:
 $$
@@ -996,7 +996,7 @@ $$
 
 ## Invariance in 3 dimension
 $$
-\Delta u(B\bf{x}) = \Delta u(\bf{x})
+\Delta u(B\mathbf{x}) = \Delta u(\mathbf{x})
 $$
 where $B$ is an orthogonal matrix, $BB^T=I$
 
@@ -1056,24 +1056,24 @@ $$
 u(r, \theta) = (a^2 - r^2)\int_0^{2\pi}\frac{h(\phi)}{a^2-2ar\cos(\theta-\phi)+r^2}\frac{\mathrm{d}\phi}{2\pi}
 $$
 
-Alternate notation by letting $\bf{x} = (r, \theta), \bf{x}' = (a,\theta)$, and changing the integral to a line integral around the arc of a full circle:
+Alternate notation by letting $\mathbf{x} = (r, \theta), \mathbf{x}' = (a,\theta)$, and changing the integral to a line integral around the arc of a full circle:
 $$
-u(\bf{x}) = \frac{a^2-|\bf{x}|^2}{2\pi a}\int_{|\bf{x}'|=a }\frac{u(\bf{x}')}{|\bf{x} - \bf{x}'|^2}\mathrm{d}s'
+u(\mathbf{x}) = \frac{a^2-|\mathbf{x}|^2}{2\pi a}\int_{|\mathbf{x}'|=a }\frac{u(\mathbf{x}')}{|\mathbf{x} - \mathbf{x}'|^2}\mathrm{d}s'
 $$
-for $\bf{x} \in D$, where $u(\bf{x}') = h(\phi)$
+for $\mathbf{x} \in D$, where $u(\mathbf{x}') = h(\phi)$
 
 ### Theorem 1
-Let $h(\phi) = u(\bf{x}')$ be continous function on the circle $\partial D$. Then the Poisson's formula provides the only harmonic function in $D$ s.t.
+Let $h(\phi) = u(\mathbf{x}')$ be continous function on the circle $\partial D$. Then the Poisson's formula provides the only harmonic function in $D$ s.t.
 $$
-\lim_{\bf{x} \rightarrow \bf{x}_0} u(\bf{x)}=h(\bf{x}_0), \forall \bf{x}_0 \in \partial D
+\lim_{\mathbf{x} \rightarrow \mathbf{x}_0} u(\mathbf{x)}=h(\mathbf{x}_0), \forall \mathbf{x}_0 \in \partial D
 $$
-This means $u(\bf{x})$ is continuous on $\overline{D} = D \cup \partial D$
+This means $u(\mathbf{x})$ is continuous on $\overline{D} = D \cup \partial D$
 
 ### Mean value property
-Let $u$ be a harmonic function in a disk $D$ (continuous on $\overline{D}$). Then $u( \bf{0})$ is the average of $u$ on $\partial D$ 
+Let $u$ be a harmonic function in a disk $D$ (continuous on $\overline{D}$). Then $u( \mathbf{0})$ is the average of $u$ on $\partial D$ 
 
 ### Differentiability
-Let $u$ be a harmonic function in any open set $D$ of the plane. Then $u(\bf{x)} = u(x, y)$ has all partial derivatives of all order in $D$.
+Let $u$ be a harmonic function in any open set $D$ of the plane. Then $u(\mathbf{x)} = u(x, y)$ has all partial derivatives of all order in $D$.
 
 ## 7.1 Green's first identity
 From product rule
@@ -1088,33 +1088,33 @@ Using the divergence theorem, Green's first identity:
 
 $$
 \tag{7.1.G1}
-\iint_{\partial D}v\frac{\partial u}{\partial \bf{n}}\ \mathrm{d}S = \iiint_D \nabla v \cdot \nabla u \ \mathrm{d}\bf{x} + \iiint_D v \Delta u \ \mathrm{d}\bf{x}
+\iint_{\partial D}v\frac{\partial u}{\partial \mathbf{n}}\ \mathrm{d}S = \iiint_D \nabla v \cdot \nabla u \ \mathrm{d}\mathbf{x} + \iiint_D v \Delta u \ \mathrm{d}\mathbf{x}
 $$
 Taking $v\equiv 1$,
 $$
 \tag{7.1.2}
-\iint_{\partial D}\frac{\partial u}{\partial \bf{n}}\ \mathrm{d}S = \iiint_D \Delta u \ \mathrm{d}\bf{x}
+\iint_{\partial D}\frac{\partial u}{\partial \mathbf{n}}\ \mathrm{d}S = \iiint_D \Delta u \ \mathrm{d}\mathbf{x}
 $$
 For the Neumann problem
 $$
 \begin{cases}
 \Delta u = f(x), \quad x \in D \\
-\frac{\partial u}{\partial \bf{n}} = h(x), \quad x \in \partial D
+\frac{\partial u}{\partial \mathbf{n}} = h(x), \quad x \in \partial D
 \end{cases}
 $$
 Data are required to satisfy:
 $$
-\iint_{\partial D}h\ \mathrm{d}S = \iiint_D f \ \mathrm{d}\bf{x}
+\iint_{\partial D}h\ \mathrm{d}S = \iiint_D f \ \mathrm{d}\mathbf{x}
 $$
 This problem has no unique solution
 
 ## Mean value property
 The average value of any harmonic function over any sphere equals the value at the center.
 
-Proven by $\Delta u(\bf{x}) = 0, |\bf{x}|\le a$, $\frac{\partial u}{\partial \bf{n}} = \frac{\partial u}{\partial r}$ where $r = (x^2 + y^2 + z^2)^{1/2} = |\bf{x}|$, and by changing to spherical coordinates
+Proven by $\Delta u(\mathbf{x}) = 0, |\mathbf{x}|\le a$, $\frac{\partial u}{\partial \mathbf{n}} = \frac{\partial u}{\partial r}$ where $r = (x^2 + y^2 + z^2)^{1/2} = |\mathbf{x}|$, and by changing to spherical coordinates
 
 $$
-\frac{1}{\text{area of }S} \iint_Su\ \mathrm{d}S = u(\bf{0})
+\frac{1}{\text{area of }S} \iint_Su\ \mathrm{d}S = u(\mathbf{0})
 $$
 
 ## Maximum principle
@@ -1126,74 +1126,74 @@ applies for Dirichlet and Neumann problems. Proven by difference of two solution
 ## Dirichlet's principle
 Energy:
 $$
-E[w] = \frac{1}{2}\iiint_D|\nabla w|^2\ \mathrm{d} \bf{x}
+E[w] = \frac{1}{2}\iiint_D|\nabla w|^2\ \mathrm{d} \mathbf{x}
 $$
 The state of lowest energy of any physical system is called a *ground state*, then harmonic functions are the preferred state:
 
-Let $u(\bf{x})$ be the unique harmonic function in $D$ that satisfies $w = h(\bf{x)}$ on $\partial D$. Let $w(\bf{x)}$ be any function in $D$ that satisfies the same condition. Then $E[w] \ge E[u]$
+Let $u(\mathbf{x})$ be the unique harmonic function in $D$ that satisfies $w = h(\mathbf{x)}$ on $\partial D$. Let $w(\mathbf{x)}$ be any function in $D$ that satisfies the same condition. Then $E[w] \ge E[u]$
 
 ## Green's Second identity
 $$
 \tag{7.2.G2}
-\iiint_D(u\Delta v-v \Delta u)\ \mathrm{d} \bf{x} = \iint_{\partial D}\Big(u\frac{\partial v}{\partial \bf{n}}-v\frac{\partial u}{\partial \bf{n}}\Big)\ \mathrm{d}S
+\iiint_D(u\Delta v-v \Delta u)\ \mathrm{d} \mathbf{x} = \iint_{\partial D}\Big(u\frac{\partial v}{\partial \mathbf{n}}-v\frac{\partial u}{\partial \mathbf{n}}\Big)\ \mathrm{d}S
 $$
 Proven by switching $u, v$ from $(G1)$ and subtracting.
 
 A boundary condition is called symmetric if RHS of $(G2)$ vanishes
 ## Representation Formula
-For $\Delta u = 0, \bf{x} \in D$, any harmonic function can represented as:
+For $\Delta u = 0, \mathbf{x} \in D$, any harmonic function can represented as:
 $$
 \tag{7.2.1}
-u(\bf{x}_0)=\iint_{\partial D}\Big[-u(\bf{x})\frac{\partial}{\partial \bf{n}}\Big(\frac{1}{|\bf{x}-\bf{x}_0|}\Big)+\frac{1}{|\bf{x}-\bf{x}_0|}\frac{\partial u}{\partial \bf{n}}\Big]\frac{\mathrm{d}S}{4\pi}
+u(\mathbf{x}_0)=\iint_{\partial D}\Big[-u(\mathbf{x})\frac{\partial}{\partial \mathbf{n}}\Big(\frac{1}{|\mathbf{x}-\mathbf{x}_0|}\Big)+\frac{1}{|\mathbf{x}-\mathbf{x}_0|}\frac{\partial u}{\partial \mathbf{n}}\Big]\frac{\mathrm{d}S}{4\pi}
 $$
 
 $$
-=\iint_{\partial D}\Big(u\frac{\partial v}{\partial \bf{n}} - v\frac{\partial u}{\partial \bf{n}}\Big)\mathrm{d}S, \quad v = -\frac{1}{4\pi |\bf{x}-\bf{x}_0|}
+=\iint_{\partial D}\Big(u\frac{\partial v}{\partial \mathbf{n}} - v\frac{\partial u}{\partial \mathbf{n}}\Big)\mathrm{d}S, \quad v = -\frac{1}{4\pi |\mathbf{x}-\mathbf{x}_0|}
 $$
 
 ## Green's function
-$v = -\frac{1}{4\pi |\bf{x}-\bf{x}_0|}$ is harmonic except at $\bf{x}_0$
+$v = -\frac{1}{4\pi |\mathbf{x}-\mathbf{x}_0|}$ is harmonic except at $\mathbf{x}_0$
 
-Defined in domain $D$ for the operator $-\Delta$, and for a point $\bf{x}_0 \in D$
+Defined in domain $D$ for the operator $-\Delta$, and for a point $\mathbf{x}_0 \in D$
 
-1. $G(\bf{x}) \in C^2$ and $\Delta G = 0$ for $\bf{x} \in D - \{\bf{x}_0\}$
-2. $G(\bf{x}) = 0$ for $\bf{x} \in \partial D$
-3. The function $G(\bf{x}) + \frac{1}{4\pi |\bf{x}-\bf{x}_0|} \in C^2$ is finite at $\bf{x}_0$ and harmonic at $\bf{x}_0$
-      - i.e. $\Delta(G+v)=0, \quad \bf{x}\in D$
+1. $G(\mathbf{x}) \in C^2$ and $\Delta G = 0$ for $\mathbf{x} \in D - \{\mathbf{x}_0\}$
+2. $G(\mathbf{x}) = 0$ for $\mathbf{x} \in \partial D$
+3. The function $G(\mathbf{x}) + \frac{1}{4\pi |\mathbf{x}-\mathbf{x}_0|} \in C^2$ is finite at $\mathbf{x}_0$ and harmonic at $\mathbf{x}_0$
+      - i.e. $\Delta(G+v)=0, \quad \mathbf{x}\in D$
 
-$G(\bf{x}, \bf{x}_0)$ is the usual notation
+$G(\mathbf{x}, \mathbf{x}_0)$ is the usual notation
 
 Theorem 1: The solution to the Dirichlet problem
 $$
-\Delta u = 0, \quad \bf{x} \in D
+\Delta u = 0, \quad \mathbf{x} \in D
 $$
 
 $$
-u = h, \quad \bf{x}\in \partial D
+u = h, \quad \mathbf{x}\in \partial D
 $$
 is
 $$
 \tag{7.3.1}
-u( \bf{x}_0)=\iint_{\partial D}h( \bf{x})\frac{\partial G( \bf{x}, \bf{x}_0) }{\partial \bf{n}}\mathrm{d}S
+u( \mathbf{x}_0)=\iint_{\partial D}h( \mathbf{x})\frac{\partial G( \mathbf{x}, \mathbf{x}_0) }{\partial \mathbf{n}}\mathrm{d}S
 $$
 
 ## Symmetry of Green's function
 $$
-G(\bf{x}, \bf{x}_0) = G(\bf{x}_0, \bf{x}), \quad \bf{x} \ne \bf{x}_0
+G(\mathbf{x}, \mathbf{x}_0) = G(\mathbf{x}_0, \mathbf{x}), \quad \mathbf{x} \ne \mathbf{x}_0
 $$
 AKA *principle of reciprocity*
 
 Theorem 2: The solution to the problem
 $$
-\Delta u = f, \quad \bf{x} \in D
+\Delta u = f, \quad \mathbf{x} \in D
 $$
 
 $$
-u = h, \quad \bf{x}\in \partial D
+u = h, \quad \mathbf{x}\in \partial D
 $$
 is
 $$
-u( \bf{x}_0)=\iint_{\partial D}h( \bf{x})\frac{\partial G( \bf{x}, \bf{x}_0) }{\partial \bf{n}}\mathrm{d}S + \iiint_Df(\bf{x})G(\bf{x}, \bf{x}_0) \mathrm{d}\bf{x}
+u( \mathbf{x}_0)=\iint_{\partial D}h( \mathbf{x})\frac{\partial G( \mathbf{x}, \mathbf{x}_0) }{\partial \mathbf{n}}\mathrm{d}S + \iiint_Df(\mathbf{x})G(\mathbf{x}, \mathbf{x}_0) \mathrm{d}\mathbf{x}
 $$
 Proven by Green's second identity and same procedure as deriving $(7.2.1)$
 
@@ -1207,42 +1207,42 @@ u(x, y, 0) = h(x, y)
 $$
 Solved by using Green's function and method of reflection. Green's function for $D$ is
 $$
-G(\bf{x}, \bf{x}_0) = -\frac{1}{4\pi|\bf{x}-\bf{x}_0|} + \frac{1}{4\pi|\bf{x}-\bf{x}^*_0|}
+G(\mathbf{x}, \mathbf{x}_0) = -\frac{1}{4\pi|\mathbf{x}-\mathbf{x}_0|} + \frac{1}{4\pi|\mathbf{x}-\mathbf{x}^*_0|}
 $$
-where $\bf{x}^* =(x,y,-z)$
+where $\mathbf{x}^* =(x,y,-z)$
 
 Solution:
 $$
-u(\bf{x}_0) = \frac{z_0}{2\pi}\iint_{\partial D}\frac{h(\bf{x})}{|\bf{x}-\bf{x}_0|^3}\mathrm{d}S
+u(\mathbf{x}_0) = \frac{z_0}{2\pi}\iint_{\partial D}\frac{h(\mathbf{x})}{|\mathbf{x}-\mathbf{x}_0|^3}\mathrm{d}S
 $$
 
 ## Sphere
 $$
-\Delta u = 0, \quad |\bf{x}| < a
+\Delta u = 0, \quad |\mathbf{x}| < a
 $$
 
 $$
-u = h, \quad |\bf{x}| = a
+u = h, \quad |\mathbf{x}| = a
 $$
 Green's function of the ball is:
 $$
 \tag{7.4.6}
-G(\bf{x}, \bf{x}_0) = -\frac{1}{4\pi \rho}+\frac{a}{|\bf{x}_0|}\frac{1}{4\pi \rho^*}
+G(\mathbf{x}, \mathbf{x}_0) = -\frac{1}{4\pi \rho}+\frac{a}{|\mathbf{x}_0|}\frac{1}{4\pi \rho^*}
 $$
-where $\rho = |\bf{x}-\bf{x}_0|, \rho^* = |\bf{x}-\bf{x}_0^*|, |\bf{x}_0||\bf{x}_0^*|:=a^2, \bf{x}_0^*=\frac{a^2\bf{x}_0}{|\bf{x}_0|^2}$ by considering congruent triangles
+where $\rho = |\mathbf{x}-\mathbf{x}_0|, \rho^* = |\mathbf{x}-\mathbf{x}_0^*|, |\mathbf{x}_0||\mathbf{x}_0^*|:=a^2, \mathbf{x}_0^*=\frac{a^2\mathbf{x}_0}{|\mathbf{x}_0|^2}$ by considering congruent triangles
 $$
 \tag{7.4.10}
-G(\bf{x}, \bf{x}_0) = -\frac{1}{4\pi |\bf{x}-\bf{x}_0|}+\frac{1}{4\pi|\frac{r_0}{a}\bf{x}-\frac{a}{r_0}\bf{x}_0|}
+G(\mathbf{x}, \mathbf{x}_0) = -\frac{1}{4\pi |\mathbf{x}-\mathbf{x}_0|}+\frac{1}{4\pi|\frac{r_0}{a}\mathbf{x}-\frac{a}{r_0}\mathbf{x}_0|}
 $$
-where $r_0 = |\bf{x}_0|$
+where $r_0 = |\mathbf{x}_0|$
 $$
 \tag{7.4.11}
-G(\bf{x}, \bf{0}) = -\frac{1}{4\pi |\bf{x}|}+\frac{1}{4\pi a}
+G(\mathbf{x}, \mathbf{0}) = -\frac{1}{4\pi |\mathbf{x}|}+\frac{1}{4\pi a}
 $$
-Solution by calculating $\frac{\partial G}{\partial \bf{n}}$:
+Solution by calculating $\frac{\partial G}{\partial \mathbf{n}}$:
 $$
 \tag{7.4.16}
-u(\bf{x}_0) = \frac{a^2-|\bf{x}_0|^2}{4\pi a}\iint_{|\bf{x}|=a}\frac{h(\bf{x})}{|\bf{x}-\bf{x}_0|^3}\mathrm{d}S
+u(\mathbf{x}_0) = \frac{a^2-|\mathbf{x}_0|^2}{4\pi a}\iint_{|\mathbf{x}|=a}\frac{h(\mathbf{x})}{|\mathbf{x}-\mathbf{x}_0|^3}\mathrm{d}S
 $$
 
 ## 8.1
