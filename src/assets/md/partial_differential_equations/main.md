@@ -1065,7 +1065,7 @@ for $\mathbf{x} \in D$, where $u(\mathbf{x}') = h(\phi)$
 ### Theorem 1
 Let $h(\phi) = u(\mathbf{x}')$ be continous function on the circle $\partial D$. Then the Poisson's formula provides the only harmonic function in $D$ s.t.
 $$
-\lim_{\mathbf{x} \rightarrow \mathbf{x}_0} u(\mathbf{x)}=h(\mathbf{x}_0), \forall \mathbf{x}_0 \in \partial D
+\lim_{\mathbf{x} \rightarrow \mathbf{x}_0} u(\mathbf{x})=h(\mathbf{x}_0), \forall \mathbf{x}_0 \in \partial D
 $$
 This means $u(\mathbf{x})$ is continuous on $\overline{D} = D \cup \partial D$
 
@@ -1073,7 +1073,7 @@ This means $u(\mathbf{x})$ is continuous on $\overline{D} = D \cup \partial D$
 Let $u$ be a harmonic function in a disk $D$ (continuous on $\overline{D}$). Then $u( \mathbf{0})$ is the average of $u$ on $\partial D$ 
 
 ### Differentiability
-Let $u$ be a harmonic function in any open set $D$ of the plane. Then $u(\mathbf{x)} = u(x, y)$ has all partial derivatives of all order in $D$.
+Let $u$ be a harmonic function in any open set $D$ of the plane. Then $u(\mathbf{x}) = u(x, y)$ has all partial derivatives of all order in $D$.
 
 ## 7.1 Green's first identity
 From product rule
@@ -1130,7 +1130,7 @@ E[w] = \frac{1}{2}\iiint_D|\nabla w|^2\ \mathrm{d} \mathbf{x}
 $$
 The state of lowest energy of any physical system is called a *ground state*, then harmonic functions are the preferred state:
 
-Let $u(\mathbf{x})$ be the unique harmonic function in $D$ that satisfies $w = h(\mathbf{x)}$ on $\partial D$. Let $w(\mathbf{x)}$ be any function in $D$ that satisfies the same condition. Then $E[w] \ge E[u]$
+Let $u(\mathbf{x})$ be the unique harmonic function in $D$ that satisfies $w = h(\mathbf{x})$ on $\partial D$. Let $w(\mathbf{x})$ be any function in $D$ that satisfies the same condition. Then $E[w] \ge E[u]$
 
 ## Green's Second identity
 $$
@@ -1229,7 +1229,7 @@ $$
 \tag{7.4.6}
 G(\mathbf{x}, \mathbf{x}_0) = -\frac{1}{4\pi \rho}+\frac{a}{|\mathbf{x}_0|}\frac{1}{4\pi \rho^*}
 $$
-where $\rho = |\mathbf{x}-\mathbf{x}_0|, \rho^* = |\mathbf{x}-\mathbf{x}_0^*|, |\mathbf{x}_0||\mathbf{x}_0^*|:=a^2, \mathbf{x}_0^*=\frac{a^2\mathbf{x}_0}{|\mathbf{x}_0|^2}$ by considering congruent triangles
+where $\rho = |\mathbf{x}-\mathbf{x}_0|, \rho^* = |\mathbf{x}-\mathbf{x}_0^*|, |\mathbf{x}_0|\mathbf{x}_0^*|:=a^2, \mathbf{x}_0^*=\frac{a^2\mathbf{x}_0}{|\mathbf{x}_0|^2}$ by considering congruent triangles
 $$
 \tag{7.4.10}
 G(\mathbf{x}, \mathbf{x}_0) = -\frac{1}{4\pi |\mathbf{x}-\mathbf{x}_0|}+\frac{1}{4\pi|\frac{r_0}{a}\mathbf{x}-\frac{a}{r_0}\mathbf{x}_0|}

@@ -4,6 +4,7 @@ import pde_math_review_md from './assets/md/partial_differential_equations/math_
 import computer_networking_md from './assets/md/computer_networking/main.md?raw'
 import control_theory_md from './assets/md/control_theory/main.md?raw'
 import control_theory_math_review_md from './assets/md/control_theory/math_review.md?raw'
+import statistics_md from './assets/md/statistics/main.md?raw'
 import ReactMarkdown from 'react-markdown'
 import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
@@ -13,6 +14,7 @@ import remarkGfm from 'remark-gfm'
 import 'katex/dist/katex.min.css'
 
 import {Route, Routes, Link} from "react-router-dom";
+
 
 const Home = () => <h1>Home</h1>;
 const PDE_Md = () => (<article><ReactMarkdown
@@ -36,12 +38,24 @@ const ComputerNetworkingMd = () => (<article><ReactMarkdown
     rehypePlugins={[rehypeKatex]}
 /></article>);
 const ControlTheoryMd = () => (<article><ReactMarkdown
+    components={{
+        img: ({node, ...props}) => <img style={{
+            maxWidth:
+                props.alt == 'block_diagram_series' ? '30%' :
+                    props.alt == 'block_diagram_parallel' ? '20%' : '25%'
+        }}{...props} />
+    }}
     children={control_theory_md}
     remarkPlugins={[remarkMath]}
     rehypePlugins={[rehypeKatex]}
 /></article>);
 const ControlTheoryMathReviewMd = () => (<article><ReactMarkdown
     children={control_theory_math_review_md}
+    remarkPlugins={[remarkMath]}
+    rehypePlugins={[rehypeKatex]}
+/></article>);
+const StatisticsMd = () => (<article><ReactMarkdown
+    children={statistics_md}
     remarkPlugins={[remarkMath]}
     rehypePlugins={[rehypeKatex]}
 /></article>);
@@ -109,6 +123,15 @@ const routes = [
                 control theory math review md
             </p>
         )
+    },
+    {
+        path: "/statistics-md",
+        main: () => <StatisticsMd />,
+        sidebar: () => (
+            <p>
+                statistics md
+            </p>
+        )
     }
 ];
 
@@ -132,14 +155,15 @@ export default function App() {
                     <li>
                         <Link to="/computer-networking-md">Computer networking md</Link>
                     </li>
-                    {
-                        // <li>
-                        //   <Link to="/control-theory-md">Control theory md</Link>
-                        // </li>
-                        // <li>
-                        //   <Link to="/control-theory-math-review-md">Control theory math review md</Link>
-                        // </li>
-                    }
+                    <li>
+                        <Link to="/control-theory-md">Control theory md</Link>
+                    </li>
+                    <li>
+                        <Link to="/control-theory-math-review-md">Control theory math review md</Link>
+                    </li>
+                    <li>
+                        <Link to="/statistics-md">Statistics md</Link>
+                    </li>
                 </ul>
                 <Routes>
                     {routes.map(({path, sidebar}) => (

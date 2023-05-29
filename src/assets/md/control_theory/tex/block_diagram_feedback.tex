@@ -1,0 +1,26 @@
+\documentclass[preview]{standalone}
+\usepackage{caption}
+\usepackage{tikz}
+\usetikzlibrary{fit, arrows}
+\captionsetup[figure]{labelformat=empty}
+
+\begin{document}
+\begin{tikzpicture}[auto, node distance=1.5cm,>=latex']
+  \tikzstyle{block} = [draw, rectangle, minimum height=2em, minimum width=4em]
+  \tikzstyle{sum} = [draw, fill=white, circle, inner sep=0.5mm]
+  \tikzstyle{tmp} = [coordinate]
+  \node (input) {};
+  \node [sum, right of=input] (sum) {$\Sigma$};
+  \node [block, right of=sum] (G1) {$G_1$};
+  \node [tmp, right of=G1] (split) {};
+  \node [block, below of=G1] (G2) {$-G_2$};
+  \node [left=1cm, right of=split] (output) {};
+  \node [fit=(input) (sum) (G1) (G2) (output), label=below:{$G_{yu}=\frac{G_1}{1+G_1G_2}$}] {};
+
+  \draw [->] (input) -- node {$u$} (sum);
+  \draw [->] (sum) -- node {$e$} (G1);
+  \draw [->] (G1) -- node {$y$} (output);
+  \draw [->] (split) |- node {} (G2);
+  \draw [->] (G2) -| node {} (sum);
+\end{tikzpicture}
+\end{document}
