@@ -188,6 +188,13 @@ does not have full rank
 ![block_diagram_parallel](/md/control_theory/tex/block_diagram_parallel.png)
 ![block_diagram_feedback](/md/control_theory/tex/block_diagram_feedback.png)
 
+### The Bode Plot
+For a transfer function $G(s)$,
+
+the gain is $|G(s)|$ and
+
+the phase is $\arg G(s) = \arctan \frac{\mathfrak{Im} G(s)}{\mathfrak{Re} G(s)}$
+
 
 ### Laplace transform
 For LTI system with zero initial state
@@ -213,3 +220,15 @@ Transfer function (assuming the inverse exists) is
 $$
 G(s) = \Big(\mathbf{C}(s\mathbf{I}-\mathbf{A})^{-1}\mathbf{B}+\mathbf{D}\Big)
 $$
+
+## 9 Frequency domain analysis
+### Loop transfer function
+![block_diagram_loop_transfer_function](/md/control_theory/tex/block_diagram_loop_transfer_function.png)
+
+Injecting a sinusoid $e^{i\omega_0}$ at point $A$, the system is oscillating if $B$ is the same sinusoid with the same amplitutde and phase. Tracing signals around the loop, $x = -xL(i\omega_0) \Rightarrow L(i\omega_0) = -1$
+
+### Nyquist Criterion
+#### Nyquist plot
+The Nyquist "D contour" is
+
+

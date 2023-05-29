@@ -42,7 +42,9 @@ const ControlTheoryMd = () => (<article><ReactMarkdown
         img: ({node, ...props}) => <img style={{
             maxWidth:
                 props.alt == 'block_diagram_series' ? '30%' :
-                    props.alt == 'block_diagram_parallel' ? '20%' : '25%'
+                    props.alt == 'block_diagram_parallel' ? '20%' :
+                        props.alt == 'block_diagram_feedback' ? '25%' :
+                            '40%'
         }}{...props} />
     }}
     children={control_theory_md}
