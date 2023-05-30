@@ -231,4 +231,18 @@ Injecting a sinusoid $e^{i\omega_0}$ at point $A$, the system is oscillating if 
 #### Nyquist plot
 The Nyquist "D contour" is
 
+![nyquist_d_contour](/md/control_theory/tex/nyquist_d_contour.png)
+
+$R \rightarrow \infty$ and the middle semi-circle to the right is to avoid any poles on the imaginary axis
+
+The Nyquist plot is the locus of the loop transfer function $L(s)$ when $s$ traverses $\Gamma$ in the clockwise direction
+
+$L(i\omega_0)=-1$ if the Nyquist plot passes through $L=-1$, the *critical point*.
+
+Simplified Nyquist criterion: Let $L(s)$ be the loop transfer function for a negative feedback system and assume that $L$ has no poles for $\mathfrak{Re} s \ge 0$ except for a single pole on the imaginary axis. Then the closed loop system is stable iff closed contour given by $\Omega = \{L(i\omega) : -\infty < \omega < \infty\} \subset \mathbb{C}$ has no net encirclement of the critical points $s = -1$
+
+### General Nyquist Criterion
+Nyquist's stability theorem: Consider a closed loop system with the loop transfer function $L(s)$ that has $P$ poles in the region enclosed by the Nyquist contour. Let $N$ be the net number of clockwise encirclement of $-1$ by $L(s)$ when $s$ encircles the Nyquist contour $\Gamma$ in the clockwise direction. The closed loop system then has $Z = N + P$ poles in the right half-place.
+
+
 

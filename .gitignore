@@ -1,6 +1,6 @@
 .vite
 node_modules
 package-lock.json
-.log
-.aux
-.pdf
+*.log
+*.aux
+*.pdf
