@@ -233,7 +233,7 @@ The Nyquist "D contour" is
 
 ![nyquist_d_contour](/md/control_theory/tex/nyquist_d_contour.png)
 
-$R \rightarrow \infty$ and the middle semi-circle to the right is to avoid any poles on the imaginary axis
+$R \rightarrow \infty$ and the middle semi-circle to the right (applies to every pole) is to avoid any poles on the imaginary axis
 
 The Nyquist plot is the locus of the loop transfer function $L(s)$ when $s$ traverses $\Gamma$ in the clockwise direction
 
@@ -241,8 +241,16 @@ $L(i\omega_0)=-1$ if the Nyquist plot passes through $L=-1$, the *critical point
 
 Simplified Nyquist criterion: Let $L(s)$ be the loop transfer function for a negative feedback system and assume that $L$ has no poles for $\mathfrak{Re} s \ge 0$ except for a single pole on the imaginary axis. Then the closed loop system is stable iff closed contour given by $\Omega = \{L(i\omega) : -\infty < \omega < \infty\} \subset \mathbb{C}$ has no net encirclement of the critical points $s = -1$
 
+Intuition: System is stable when $|L(i\omega)| < 1$. If $-1$ is on the left side of the Nyquist plot then system is stable.
+
 ### General Nyquist Criterion
-Nyquist's stability theorem: Consider a closed loop system with the loop transfer function $L(s)$ that has $P$ poles in the region enclosed by the Nyquist contour. Let $N$ be the net number of clockwise encirclement of $-1$ by $L(s)$ when $s$ encircles the Nyquist contour $\Gamma$ in the clockwise direction. The closed loop system then has $Z = N + P$ poles in the right half-place.
+Nyquist's stability theorem: Consider a closed loop system with the loop transfer function $L(s)$ that has $P$ poles in the region enclosed by the Nyquist contour. Let $N$ be the net number of clockwise encirclement of $-1$ by $L(s)$ when $s$ encircles the Nyquist contour $\Gamma$ in the clockwise direction. The closed loop system then has $Z = N + P$ poles in the right half-plane (Nyquist contour when $R\rightarrow \infty$ and $r\rightarrow 0$).
+
+The system is stable when $Z = 0$. It turns out $Z$ is the number of zeros enclosed by the contour.
+
+(see complex analysis math review; image of $1+L(s)$ is a shifted version of $L(s)$)
+
+Ref: <https://en.wikipedia.org/wiki/Nyquist_stability_criterion#Mathematical_derivation>
 
 
 
