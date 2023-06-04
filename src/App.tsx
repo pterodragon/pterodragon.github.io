@@ -44,6 +44,7 @@ const ControlTheoryMd = () => (<article><ReactMarkdown
                 props.alt == 'block_diagram_series' ? '30%' :
                     props.alt == 'block_diagram_parallel' ? '20%' :
                         props.alt == 'block_diagram_feedback' ? '25%' :
+                          props.alt == 'block_diagram_pid' ? '70%' :
                             '40%'
         }}{...props} />
     }}

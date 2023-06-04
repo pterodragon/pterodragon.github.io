@@ -163,8 +163,18 @@ $$
 G(s) = \frac{b(s)}{a(s)} = \frac{b_0 s^m + b_1 s^{m-1} + \dots + b_m}{s^n + a_1 s^{n-1} + \dots + a_n}
 $$
 $a(s)$ is the characteristic polynomial of the ODE
+
+### Transfer function of common ODEs
+The transfer function of a PID controller described by the ODE
+$$
+y=k_pu+k_d\dot{u}+k_i\int u
+$$
+is
+$$
+H(s) = \frac{Y(s)}{U(s)} = k_p + k_d s + \frac{k_i}{s}
+$$
 ### Gains, Poles and Zeros
-The *zero frequency gain* of a system is given by $|H(0)|$. It represents the ratio of steady state value of output with respect to a step input
+The *zero frequency gain* of a system is given by $|H(0)|$. It represents the ratio of steady state value of output with respect to a step input ($u = e^{st}$ for $s = 0$; by final value theorem, $|\lim_{s\rightarrow 0}(s\cdot H(s)U(s))| = |H(0)|$, $U(s) = 1/s $ is the transfer function of a unit step
 
 For a linear input/output system with a rational transfer function
 $$
@@ -182,6 +192,13 @@ $$
 \end{bmatrix}
 $$
 does not have full rank
+
+#### Extra: final value theorem
+If a system described by the time domain signal is $x(t)$ (transfer function is $X(s)$, then provided both limit exists (or $X(s)$ doesn't have poles in the right half plane except possibly a single pole at the origin)), then the steady state value of the signal is
+$$
+\lim_{t\rightarrow \infty} x(t) = \lim_{s\rightarrow 0} sX(s)
+$$
+Proven by differentiating the Laplace transform of $x(t)$
 
 ### Block diagrams and transfer functions
 ![block_diagram_series](/md/control_theory/tex/block_diagram_series.png)
@@ -252,5 +269,26 @@ The system is stable when $Z = 0$. It turns out $Z$ is the number of zeros enclo
 
 Ref: <https://en.wikipedia.org/wiki/Nyquist_stability_criterion#Mathematical_derivation>
 
+## PID
+![block_diagram_pid](/md/control_theory/tex/block_diagram_pid.png)
 
+The input/output relation for an ideal PID controller with error feedabck is
+$$
+u = k_p e + k_i \int_0^t e(\tau)\mathrm{d}\tau + k_d\frac{\mathrm{d}e}{\mathrm{d}t}=k_p\Big(e+\frac{1}{T_i}\int_0^te(\tau)\mathrm{d}\tau+T_d\frac{\mathrm{d}e}{\mathrm{d}t}\Big)
+$$
 
+Let the process and a controller with **pure proportional control** have transfer functions $P(s)$ and $C(s) = k$ (gain), the transfer function from reference to input is 
+$$
+G_{yr} = \frac{PC}{1 + PC}
+$$
+The steady state error for a unit step is (by the final value theorem; $U(s) = 1/s$ is the transfer function of a unit step)
+$$
+1 - \lim_{s\rightarrow 0} (s\cdot G_{yr}(s)U(s)) = 1 - G_{yr}(0) = \frac{1}{1 + k P(0)}
+$$
+Therefore, the system inherently has a steady state error
+
+But for a PID controller, let $C(s)$ be the transfer function of the PID controller
+$$
+C(s) = k_p + k_d s + \frac{k_i}{s}
+$$
+Then $C(0) = \infty$ and from above (substituting $C(s)$), $1 - G_{yr}(0) = 0$. No steady state error for a step input.

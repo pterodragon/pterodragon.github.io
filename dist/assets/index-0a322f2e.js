@@ -2838,8 +2838,18 @@ $$
 G(s) = \\frac{b(s)}{a(s)} = \\frac{b_0 s^m + b_1 s^{m-1} + \\dots + b_m}{s^n + a_1 s^{n-1} + \\dots + a_n}
 $$
 $a(s)$ is the characteristic polynomial of the ODE
+
+### Transfer function of common ODEs
+The transfer function of a PID controller described by the ODE
+$$
+y=k_pu+k_d\\dot{u}+k_i\\int u
+$$
+is
+$$
+H(s) = \\frac{Y(s)}{U(s)} = k_p + k_d s + \\frac{k_i}{s}
+$$
 ### Gains, Poles and Zeros
-The *zero frequency gain* of a system is given by $|H(0)|$. It represents the ratio of steady state value of output with respect to a step input
+The *zero frequency gain* of a system is given by $|H(0)|$. It represents the ratio of steady state value of output with respect to a step input ($u = e^{st}$ for $s = 0$; by final value theorem, $|\\lim_{s\\rightarrow 0}(s\\cdot H(s)U(s))| = |H(0)|$, $U(s) = 1/s $ is the transfer function of a unit step
 
 For a linear input/output system with a rational transfer function
 $$
@@ -2857,6 +2867,13 @@ $$
 \\end{bmatrix}
 $$
 does not have full rank
+
+#### Extra: final value theorem
+If a system described by the time domain signal is $x(t)$ (transfer function is $X(s)$, then provided both limit exists (or $X(s)$ doesn't have poles in the right half plane except possibly a single pole at the origin)), then the steady state value of the signal is
+$$
+\\lim_{t\\rightarrow \\infty} x(t) = \\lim_{s\\rightarrow 0} sX(s)
+$$
+Proven by differentiating the Laplace transform of $x(t)$
 
 ### Block diagrams and transfer functions
 ![block_diagram_series](/md/control_theory/tex/block_diagram_series.png)
@@ -2927,8 +2944,29 @@ The system is stable when $Z = 0$. It turns out $Z$ is the number of zeros enclo
 
 Ref: <https://en.wikipedia.org/wiki/Nyquist_stability_criterion#Mathematical_derivation>
 
+## PID
+![block_diagram_pid](/md/control_theory/tex/block_diagram_pid.png)
 
+The input/output relation for an ideal PID controller with error feedabck is
+$$
+u = k_p e + k_i \\int_0^t e(\\tau)\\mathrm{d}\\tau + k_d\\frac{\\mathrm{d}e}{\\mathrm{d}t}=k_p\\Big(e+\\frac{1}{T_i}\\int_0^te(\\tau)\\mathrm{d}\\tau+T_d\\frac{\\mathrm{d}e}{\\mathrm{d}t}\\Big)
+$$
 
+Let the process and a controller with **pure proportional control** have transfer functions $P(s)$ and $C(s) = k$ (gain), the transfer function from reference to input is 
+$$
+G_{yr} = \\frac{PC}{1 + PC}
+$$
+The steady state error for a unit step is (by the final value theorem; $U(s) = 1/s$ is the transfer function of a unit step)
+$$
+1 - \\lim_{s\\rightarrow 0} (s\\cdot G_{yr}(s)U(s)) = 1 - G_{yr}(0) = \\frac{1}{1 + k P(0)}
+$$
+Therefore, the system inherently has a steady state error
+
+But for a PID controller, let $C(s)$ be the transfer function of the PID controller
+$$
+C(s) = k_p + k_d s + \\frac{k_i}{s}
+$$
+Then $C(0) = \\infty$ and from above (substituting $C(s)$), $1 - G_{yr}(0) = 0$. No steady state error for a step input.
 `,x_=`# Math review
 
 ## Least squares
@@ -3419,4 +3457,4 @@ l0,-`+(n+144)+`c-2,-159.3,-10,-310.7,-24,-454c-53.3,-528,-210,-949.7,
  * LICENSE.md file in the root directory of this source tree.
  *
  * @license MIT
- */function ss(){return ss=Object.assign?Object.assign.bind():function(t){for(var e=1;e<arguments.length;e++){var n=arguments[e];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(t[r]=n[r])}return t},ss.apply(this,arguments)}function zZ(t,e){if(t==null)return{};var n={},r=Object.keys(t),i,a;for(a=0;a<r.length;a++)i=r[a],!(e.indexOf(i)>=0)&&(n[i]=t[i]);return n}function qZ(t){return!!(t.metaKey||t.altKey||t.ctrlKey||t.shiftKey)}function ZZ(t,e){return t.button===0&&(!e||e==="_self")&&!qZ(t)}const GZ=["onClick","relative","reloadDocument","replace","state","target","to","preventScrollReset"];function XZ(t){let{basename:e,children:n,window:r}=t,i=g1.useRef();i.current==null&&(i.current=nZ({window:r,v5Compat:!0}));let a=i.current,[o,l]=g1.useState({action:a.action,location:a.location});return g1.useLayoutEffect(()=>a.listen(l),[a]),g1.createElement(RZ,{basename:e,children:n,location:o.location,navigationType:o.action,navigator:a})}const WZ=typeof window<"u"&&typeof window.document<"u"&&typeof window.document.createElement<"u",UZ=/^(?:[a-z][a-z0-9+.-]*:|\/\/)/i,w6=g1.forwardRef(function(e,n){let{onClick:r,relative:i,reloadDocument:a,replace:o,state:l,target:Q,to:s,preventScrollReset:u}=e,T=zZ(e,GZ),{basename:c}=g1.useContext(He),f,h=!1;if(typeof s=="string"&&UZ.test(s)&&(f=s,WZ))try{let m=new URL(window.location.href),y=s.startsWith("//")?new URL(m.protocol+s):new URL(s),x=NT(y.pathname,c);y.origin===m.origin&&x!=null?s=x+y.search+y.hash:h=!0}catch{}let p=AZ(s,{relative:i}),v=KZ(s,{replace:o,state:l,target:Q,preventScrollReset:u,relative:i});function d(m){r&&r(m),m.defaultPrevented||v(m)}return g1.createElement("a",ss({},T,{href:f||p,onClick:h||a?r:d,ref:n,target:Q}))});var Vm;(function(t){t.UseScrollRestoration="useScrollRestoration",t.UseSubmitImpl="useSubmitImpl",t.UseFetcher="useFetcher"})(Vm||(Vm={}));var Cm;(function(t){t.UseFetchers="useFetchers",t.UseScrollRestoration="useScrollRestoration"})(Cm||(Cm={}));function KZ(t,e){let{target:n,replace:r,state:i,preventScrollReset:a,relative:o}=e===void 0?{}:e,l=SZ(),Q=va(),s=NH(t,{relative:o});return g1.useCallback(u=>{if(ZZ(u,n)){u.preventDefault();let T=r!==void 0?r:_8(Q)===_8(s);l(t,{replace:T,state:i,preventScrollReset:a,relative:o})}},[Q,l,s,r,i,n,t,a,o])}const YZ=()=>y1.jsx("h1",{children:"Home"}),JZ=()=>y1.jsx("article",{children:y1.jsx(i5,{children:m_,remarkPlugins:[W5,eZ],rehypePlugins:[yz]})}),tG=()=>y1.jsx("article",{children:y1.jsx(i5,{children:v_,remarkPlugins:[W5],rehypePlugins:[fe]})}),eG=()=>y1.jsx("article",{children:y1.jsx(i5,{children:p_,remarkPlugins:[W5],rehypePlugins:[fe]})}),nG=()=>y1.jsx("article",{children:y1.jsx(i5,{children:y_,remarkPlugins:[W5],rehypePlugins:[fe]})}),rG=()=>y1.jsx("article",{children:y1.jsx(i5,{components:{img:({node:t,...e})=>y1.jsx("img",{style:{maxWidth:e.alt=="block_diagram_series"?"30%":e.alt=="block_diagram_parallel"?"20%":e.alt=="block_diagram_feedback"?"25%":"40%"},...e})},children:g_,remarkPlugins:[W5],rehypePlugins:[fe]})}),iG=()=>y1.jsx("article",{children:y1.jsx(i5,{children:x_,remarkPlugins:[W5],rehypePlugins:[fe]})}),aG=()=>y1.jsx("article",{children:y1.jsx(i5,{children:L_,remarkPlugins:[W5],rehypePlugins:[fe]})}),Em=[{path:"/*",main:()=>y1.jsx(YZ,{}),sidebar:()=>y1.jsx("p",{children:"My notes when I studied various things (Sorry no blogs)"})},{path:"/signal-processing-md",main:()=>y1.jsx(eG,{}),sidebar:()=>y1.jsx("p",{children:"signal processing md"})},{path:"/partial-differential-equations-md",main:()=>y1.jsx(JZ,{}),sidebar:()=>y1.jsx("p",{children:"partial differential equations md"})},{path:"/pde-math-review-md",main:()=>y1.jsx(tG,{}),sidebar:()=>y1.jsx("p",{children:"PDE math review md"})},{path:"/computer-networking-md",main:()=>y1.jsx(nG,{}),sidebar:()=>y1.jsx("p",{children:"computer networking md"})},{path:"/control-theory-md",main:()=>y1.jsx(rG,{}),sidebar:()=>y1.jsx("p",{children:"control theory md"})},{path:"/control-theory-math-review-md",main:()=>y1.jsx(iG,{}),sidebar:()=>y1.jsx("p",{children:"control theory math review md"})},{path:"/statistics-md",main:()=>y1.jsx(aG,{}),sidebar:()=>y1.jsx("p",{children:"statistics md"})}];function oG(){return y1.jsxs("div",{children:[y1.jsxs("div",{children:[y1.jsxs("ul",{children:[y1.jsx("li",{children:y1.jsx(w6,{to:"/",children:"Home"})}),y1.jsx("li",{children:y1.jsx(w6,{to:"/signal-processing-md",children:"Signal processing md"})}),y1.jsx("li",{children:y1.jsx(w6,{to:"/partial-differential-equations-md",children:"Partial differential equations md"})}),y1.jsx("li",{children:y1.jsx(w6,{to:"/pde-math-review-md",children:"PDE math review md"})}),y1.jsx("li",{children:y1.jsx(w6,{to:"/computer-networking-md",children:"Computer networking md"})}),y1.jsx("li",{children:y1.jsx(w6,{to:"/control-theory-md",children:"Control theory md"})}),y1.jsx("li",{children:y1.jsx(w6,{to:"/control-theory-math-review-md",children:"Control theory math review md"})}),y1.jsx("li",{children:y1.jsx(w6,{to:"/statistics-md",children:"Statistics md"})})]}),y1.jsx(Am,{children:Em.map(({path:t,sidebar:e})=>y1.jsx(ls,{path:t,element:e()},t))})]}),y1.jsx(Am,{children:Em.map(({path:t,main:e})=>y1.jsx(ls,{path:t,element:e()},t))})]})}pl.createRoot(document.getElementById("root")).render(y1.jsx(S5.StrictMode,{children:y1.jsx(XZ,{children:y1.jsx("div",{children:y1.jsx(oG,{})})})}));
+ */function ss(){return ss=Object.assign?Object.assign.bind():function(t){for(var e=1;e<arguments.length;e++){var n=arguments[e];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(t[r]=n[r])}return t},ss.apply(this,arguments)}function zZ(t,e){if(t==null)return{};var n={},r=Object.keys(t),i,a;for(a=0;a<r.length;a++)i=r[a],!(e.indexOf(i)>=0)&&(n[i]=t[i]);return n}function qZ(t){return!!(t.metaKey||t.altKey||t.ctrlKey||t.shiftKey)}function ZZ(t,e){return t.button===0&&(!e||e==="_self")&&!qZ(t)}const GZ=["onClick","relative","reloadDocument","replace","state","target","to","preventScrollReset"];function XZ(t){let{basename:e,children:n,window:r}=t,i=g1.useRef();i.current==null&&(i.current=nZ({window:r,v5Compat:!0}));let a=i.current,[o,l]=g1.useState({action:a.action,location:a.location});return g1.useLayoutEffect(()=>a.listen(l),[a]),g1.createElement(RZ,{basename:e,children:n,location:o.location,navigationType:o.action,navigator:a})}const WZ=typeof window<"u"&&typeof window.document<"u"&&typeof window.document.createElement<"u",UZ=/^(?:[a-z][a-z0-9+.-]*:|\/\/)/i,w6=g1.forwardRef(function(e,n){let{onClick:r,relative:i,reloadDocument:a,replace:o,state:l,target:Q,to:s,preventScrollReset:u}=e,T=zZ(e,GZ),{basename:c}=g1.useContext(He),f,h=!1;if(typeof s=="string"&&UZ.test(s)&&(f=s,WZ))try{let m=new URL(window.location.href),y=s.startsWith("//")?new URL(m.protocol+s):new URL(s),x=NT(y.pathname,c);y.origin===m.origin&&x!=null?s=x+y.search+y.hash:h=!0}catch{}let p=AZ(s,{relative:i}),v=KZ(s,{replace:o,state:l,target:Q,preventScrollReset:u,relative:i});function d(m){r&&r(m),m.defaultPrevented||v(m)}return g1.createElement("a",ss({},T,{href:f||p,onClick:h||a?r:d,ref:n,target:Q}))});var Vm;(function(t){t.UseScrollRestoration="useScrollRestoration",t.UseSubmitImpl="useSubmitImpl",t.UseFetcher="useFetcher"})(Vm||(Vm={}));var Cm;(function(t){t.UseFetchers="useFetchers",t.UseScrollRestoration="useScrollRestoration"})(Cm||(Cm={}));function KZ(t,e){let{target:n,replace:r,state:i,preventScrollReset:a,relative:o}=e===void 0?{}:e,l=SZ(),Q=va(),s=NH(t,{relative:o});return g1.useCallback(u=>{if(ZZ(u,n)){u.preventDefault();let T=r!==void 0?r:_8(Q)===_8(s);l(t,{replace:T,state:i,preventScrollReset:a,relative:o})}},[Q,l,s,r,i,n,t,a,o])}const YZ=()=>y1.jsx("h1",{children:"Home"}),JZ=()=>y1.jsx("article",{children:y1.jsx(i5,{children:m_,remarkPlugins:[W5,eZ],rehypePlugins:[yz]})}),tG=()=>y1.jsx("article",{children:y1.jsx(i5,{children:v_,remarkPlugins:[W5],rehypePlugins:[fe]})}),eG=()=>y1.jsx("article",{children:y1.jsx(i5,{children:p_,remarkPlugins:[W5],rehypePlugins:[fe]})}),nG=()=>y1.jsx("article",{children:y1.jsx(i5,{children:y_,remarkPlugins:[W5],rehypePlugins:[fe]})}),rG=()=>y1.jsx("article",{children:y1.jsx(i5,{components:{img:({node:t,...e})=>y1.jsx("img",{style:{maxWidth:e.alt=="block_diagram_series"?"30%":e.alt=="block_diagram_parallel"?"20%":e.alt=="block_diagram_feedback"?"25%":e.alt=="block_diagram_pid"?"70%":"40%"},...e})},children:g_,remarkPlugins:[W5],rehypePlugins:[fe]})}),iG=()=>y1.jsx("article",{children:y1.jsx(i5,{children:x_,remarkPlugins:[W5],rehypePlugins:[fe]})}),aG=()=>y1.jsx("article",{children:y1.jsx(i5,{children:L_,remarkPlugins:[W5],rehypePlugins:[fe]})}),Em=[{path:"/*",main:()=>y1.jsx(YZ,{}),sidebar:()=>y1.jsx("p",{children:"My notes when I studied various things (Sorry no blogs)"})},{path:"/signal-processing-md",main:()=>y1.jsx(eG,{}),sidebar:()=>y1.jsx("p",{children:"signal processing md"})},{path:"/partial-differential-equations-md",main:()=>y1.jsx(JZ,{}),sidebar:()=>y1.jsx("p",{children:"partial differential equations md"})},{path:"/pde-math-review-md",main:()=>y1.jsx(tG,{}),sidebar:()=>y1.jsx("p",{children:"PDE math review md"})},{path:"/computer-networking-md",main:()=>y1.jsx(nG,{}),sidebar:()=>y1.jsx("p",{children:"computer networking md"})},{path:"/control-theory-md",main:()=>y1.jsx(rG,{}),sidebar:()=>y1.jsx("p",{children:"control theory md"})},{path:"/control-theory-math-review-md",main:()=>y1.jsx(iG,{}),sidebar:()=>y1.jsx("p",{children:"control theory math review md"})},{path:"/statistics-md",main:()=>y1.jsx(aG,{}),sidebar:()=>y1.jsx("p",{children:"statistics md"})}];function oG(){return y1.jsxs("div",{children:[y1.jsxs("div",{children:[y1.jsxs("ul",{children:[y1.jsx("li",{children:y1.jsx(w6,{to:"/",children:"Home"})}),y1.jsx("li",{children:y1.jsx(w6,{to:"/signal-processing-md",children:"Signal processing md"})}),y1.jsx("li",{children:y1.jsx(w6,{to:"/partial-differential-equations-md",children:"Partial differential equations md"})}),y1.jsx("li",{children:y1.jsx(w6,{to:"/pde-math-review-md",children:"PDE math review md"})}),y1.jsx("li",{children:y1.jsx(w6,{to:"/computer-networking-md",children:"Computer networking md"})}),y1.jsx("li",{children:y1.jsx(w6,{to:"/control-theory-md",children:"Control theory md"})}),y1.jsx("li",{children:y1.jsx(w6,{to:"/control-theory-math-review-md",children:"Control theory math review md"})}),y1.jsx("li",{children:y1.jsx(w6,{to:"/statistics-md",children:"Statistics md"})})]}),y1.jsx(Am,{children:Em.map(({path:t,sidebar:e})=>y1.jsx(ls,{path:t,element:e()},t))})]}),y1.jsx(Am,{children:Em.map(({path:t,main:e})=>y1.jsx(ls,{path:t,element:e()},t))})]})}pl.createRoot(document.getElementById("root")).render(y1.jsx(S5.StrictMode,{children:y1.jsx(XZ,{children:y1.jsx("div",{children:y1.jsx(oG,{})})})}));
