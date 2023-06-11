@@ -180,7 +180,7 @@ For a linear input/output system with a rational transfer function
 $$
 G(s) = \frac{b(s)}{a(s)}
 $$
-if $p$ is a pole i.e. $a(p) = 0$, then $y(t) = e^{pt}$ is a solution of the linear ODE with $u = 0$ (homogeneous solution). A pole corresponds to a mode of the system with corresponding modal solution $e^{pt}$. The unforced motion of the system after an arbitrary excitation is a weighted sum of modes.
+if $p$ is a pole i.e. $a(p) = 0$, then $y(t) = e^{pt}$ is a solution of the linear ODE with $u = 0$ (homogeneous solution). A pole corresponds to a mode of the system with corresponding modal solution $e^{pt}$. The unforced motion of the system after an arbitrary excitation is a weighted sum of modes. A transfer function is unstable if some pole $p$ has $\mathfrak{Re}(p) \ge 0$.
 
 if $z$ is a zero i.e. $b(z) = 0$, since the pure exponential output corresponding to the input $u(t) = e^{st}$ with $a(z) \ne 0$ is $G(s)e^{st}$, which is zero if $b(s) = 0$. Zeros block transmission of the corresponding exponential signal.
 
@@ -269,7 +269,8 @@ The system is stable when $Z = 0$. It turns out $Z$ is the number of zeros enclo
 
 Ref: <https://en.wikipedia.org/wiki/Nyquist_stability_criterion#Mathematical_derivation>
 
-## PID
+## 10 PID control
+### PID
 ![block_diagram_pid](/md/control_theory/tex/block_diagram_pid.png)
 
 The input/output relation for an ideal PID controller with error feedabck is
@@ -292,3 +293,51 @@ $$
 C(s) = k_p + k_d s + \frac{k_i}{s}
 $$
 Then $C(0) = \infty$ and from above (substituting $C(s)$), $1 - G_{yr}(0) = 0$. No steady state error for a step input.
+
+## 11 Frequency domain design
+### Sensitivity functions
+The sensitivity function is
+$$
+S=\frac{1}{1+PC}
+$$
+### Feedback design via loop shaping
+Bending the Nyquist curve away from the critical point by choosing a compensator that gives the loop transfer function the desired shape.
+### Fundamental limitations
+#### All pass and minimum phase functions
+##### All pass functions
+Let $\mathcal{S}$ be the set of all stable, proper (defined here as degree of numerator being less than or equal to degree of denominator), real rational functions.
+
+A function in $\mathcal{S}$ is *all-pass* if its magnitude is $1$ at all points on the imaginary axis.
+$$
+\forall \omega\in \mathbb{R}, |S(j\omega)| = 1 \Rightarrow S(j \omega)\overline{S(j \omega)} = S(j \omega)S(-j\omega) = 1 
+$$
+The conjugation from outside goes into the function argument because $S$ is holomorphic whose restrictions to real numbers are real valued
+
+If $S(s)$ doesn't have the same number of poles and zeros with coefficient of highest degree of $s$ on numerator and denominator be the same then $\lim_{\omega \rightarrow \infty} |S(j\omega)| \neq 1 $ which is a contradiction. So let
+$$
+S(s) = e^{j\phi} \prod_i\frac{s - z_i}{s- p_i}, \qquad \forall (a, b), z_a\neq p_b
+$$
+$$
+\lvert S(j\omega) \rvert = \Bigg\lvert\prod_i\frac{j\omega - z_i}{j\omega- p_i}\Bigg\rvert = 1
+$$
+$$
+\lvert j\omega - p_i\rvert = \lvert\overline{-(j\omega - p_i)}\rvert = \lvert j\omega + \overline{p_i} \rvert
+$$
+Therefore, by unique factorization of polynomials, $ \{z_a\} = \{-\overline{p_b}\} $. 
+$$
+S_{ap}(s) = e^{j\phi} \prod_i\frac{s - z_i}{s+ \overline{z_i}}, \qquad \mathfrak{Re}(z_i)>0
+$$
+Note $\mathfrak{Re}(z_i) > 0$ because $S$ is stable (all poles must be on the left half plane)
+##### Minimum phase function
+A function $S_{mp} \in \mathcal{S}$ is a *minimum-phase* function if there are no zeros in $\mathfrak{Re}(s) > 0$.
+
+Examples: $1, \frac{1}{s+1}, \frac{s}{s+1}, \frac{s + 2}{s^2+s+1} $
+
+It's called minimum phase because for the same gain, the phase lag across (or group delay) is the minimum (better than when the zeros are on $\mathfrak{Re}(s) > 0$). For example, $a > 0, S(s) = \frac{a - s}{a + s}$ has phase $\arg S(j\omega) = -2 \arctan \frac{\omega}{a}$ for the gain $1$ but the transfer function $S(s) = 1$ would have no phase lags across.
+
+##### Factorization
+For any function $S \in \mathcal{S}$, $S$ can be factored into
+$$
+S = S_{ap}S_{mp}
+$$
+Proof sketch: a proper function in $\mathcal{S}$ would have all the poles $\mathfrak{Re}(p) < 0$, and each zero in the numerator would correspond to a pole in the denominator, therefore $S_{mp}$ is simply the remaining factors of the poles for $S / S_{ap}$.
