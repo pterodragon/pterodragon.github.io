@@ -313,7 +313,7 @@ $$
 $$
 The conjugation from outside goes into the function argument because $S$ is holomorphic whose restrictions to real numbers are real valued
 
-If $S(s)$ doesn't have the same number of poles and zeros with coefficient of highest degree of $s$ on numerator and denominator be the same then $\lim_{\omega \rightarrow \infty} |S(j\omega)| \neq 1 $ which is a contradiction. So let
+If $S(s)$ doesn't have the same number of poles and zeros with coefficient of highest degree of $s$ on numerator and denominator be the same then $\lim_{\omega \rightarrow \infty} |S(j\omega)| \neq 1 $ which is a contradiction. So let (in general for complex valued transfer function)
 $$
 S(s) = e^{j\phi} \prod_i\frac{s - z_i}{s- p_i}, \qquad \forall (a, b), z_a\neq p_b
 $$
@@ -328,8 +328,13 @@ $$
 S_{ap}(s) = e^{j\phi} \prod_i\frac{s - z_i}{s+ \overline{z_i}}, \qquad \mathfrak{Re}(z_i)>0
 $$
 Note $\mathfrak{Re}(z_i) > 0$ because $S$ is stable (all poles must be on the left half plane)
+
+If $S$ is real valued for real input, then poles appear in conjugate pairs and
+$$
+S_{ap}(s) = \plusmn \prod_i \frac{s - z_i}{s + z_i} = \plusmn \prod_i \frac{s + p_i}{s - p_i}, \qquad \mathfrak{Re}(z_i)>0
+$$
 ##### Minimum phase function
-A function $S_{mp} \in \mathcal{S}$ is a *minimum-phase* function if there are no zeros in $\mathfrak{Re}(s) > 0$.
+A function $S_{mp} \in \mathcal{S}$ is a *minimum-phase* function if there are no zeros in $\mathfrak{Re}(s) > 0$. (Or equivalently, $S_{mp}^{-1} \in \mathcal{S}$ because no poles or zeros are on $\mathfrak{Re}(q) > 0$)
 
 Examples: $1, \frac{1}{s+1}, \frac{s}{s+1}, \frac{s + 2}{s^2+s+1} $
 
@@ -341,3 +346,15 @@ $$
 S = S_{ap}S_{mp}
 $$
 Proof sketch: a proper function in $\mathcal{S}$ would have all the poles $\mathfrak{Re}(p) < 0$, and each zero in the numerator would correspond to a pole in the denominator, therefore $S_{mp}$ is simply the remaining factors of the poles for $S / S_{ap}$.
+
+#### Bode's integral formula
+Let $S(s) = (1 + L(s))^{-1}$ have no poles in the right half plane and have $q\ge 0$ zeros in the closed right half plane at $p_1, \dots, p_q$, and $L(s)$ be a proper, scalar rational transfer function of relative degree $\ge$ 2. Then,
+$$
+\int_0^{\infty} \ln \lvert S(j\omega)\rvert \mathrm{d}\omega = \pi \sum_{k=1}^q p_k
+$$
+Note that $\sum p_k = \sum \mathfrak{Re}p_k$ because poles are in complex conjugate pairs
+
+This has the implication of the waterbed effect: disturbance attenuation can only be improved at one location and be worse at another location at the same time.
+
+
+Ref: <https://faculty.washington.edu/chx/teaching/loopshaping/Proof_bodeIntegralThm.pdf>
