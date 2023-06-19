@@ -5,14 +5,14 @@ https://en.wikipedia.org/wiki/Vector_calculus_identities
 
 
 #### Cross product
-$$ \bf{a} \times \bf{b} = \|\bf{a}\| \|\bf{b}\| \sin(\theta) \bf{\hat{n}}
+$$ \mathbf{a} \times \mathbf{b} = \|\mathbf{a}\| \|\mathbf{b}\| \sin(\theta) \mathbf{\hat{n}}
 $$
 
-where $\bf{\hat{n}}$ is a unit vector $\bot$ to the plane containing $\bf{a}$ and $\bf{b}$ according to right-hand rule
+where $\mathbf{\hat{n}}$ is a unit vector $\bot$ to the plane containing $\mathbf{a}$ and $\mathbf{b}$ according to right-hand rule
 
 $$
-\bf{a} \times \bf{b} = \begin{vmatrix}
-\bf{i} & \bf{j} & \bf{k} \\
+\mathbf{a} \times \mathbf{b} = \begin{vmatrix}
+\mathbf{i} & \mathbf{j} & \mathbf{k} \\
 a_1 & a_2 & a_3 \\
 b_1 & b_2 & b_3 \\
 \end{vmatrix}
@@ -21,32 +21,32 @@ $$
 
 ##### properties
 $$
-\boxed{\bf{a} \times \bf{b} = - ( \bf{b} \times \bf{a} )}, \boxed{\bf{a} \times \bf{a} = \bf{0}}
+\boxed{\mathbf{a} \times \mathbf{b} = - ( \mathbf{b} \times \mathbf{a} )}, \boxed{\mathbf{a} \times \mathbf{a} = \mathbf{0}}
 $$
 
 $$
-\boxed{\bf{i} \times \bf{j} = \bf{k}}, \boxed{\bf{j} \times \bf{k} = \bf{i}}, \boxed{\bf{k} \times \bf{i} = \bf{j}}
+\boxed{\mathbf{i} \times \mathbf{j} = \mathbf{k}}, \boxed{\mathbf{j} \times \mathbf{k} = \mathbf{i}}, \boxed{\mathbf{k} \times \mathbf{i} = \mathbf{j}}
 $$
 
 #### Gradient
 $$
-\nabla f = \sum_{i = 1}^{n} \frac{\partial f}{\partial x_i} \hat{x_i} = \frac{\partial f}{\partial \bf{x}}
+\nabla f = \sum_{i = 1}^{n} \frac{\partial f}{\partial x_i} \hat{x_i} = \frac{\partial f}{\partial \mathbf{x}}
 $$
 
-$\nabla f(\bf{x})$ gives the direction of largest increase and its magnitude gives the rate of increase
+$\nabla f(\mathbf{x})$ gives the direction of largest increase and its magnitude gives the rate of increase
 
 $S: f(x, y) = 0 \Rightarrow \nabla f$ gives the normal to the surface S. 
 
 #### Directional derivatives
 $$
-\nabla_{\bf{v}} f(\bf{x}) = \bf{v}\cdot \frac{\partial f(\bf{x})}{\partial\bf{x}} = \bf{v}\cdot \nabla f
+\nabla_{\mathbf{v}} f(\mathbf{x}) = \mathbf{v}\cdot \frac{\partial f(\mathbf{x})}{\partial\mathbf{x}} = \mathbf{v}\cdot \nabla f
 $$
 
-Taking $\bf{v} = \langle1, 0, 0\rangle$ gives $\frac{\partial f}{\partial x_1}$. Directional derivative is a weighted sum of partial derivatives w.r.t. $x_i$
+Taking $\mathbf{v} = \langle1, 0, 0\rangle$ gives $\frac{\partial f}{\partial x_1}$. Directional derivative is a weighted sum of partial derivatives w.r.t. $x_i$
 
 Normal derivative (normal to a surface $S$ etc.):
 $$
-\frac{\partial f}{\partial \bf{n}} = \bf{n}\cdot\frac{\partial f}{\partial \bf{x}} = \bf{n}\cdot\nabla f
+\frac{\partial f}{\partial \mathbf{n}} = \mathbf{n}\cdot\frac{\partial f}{\partial \mathbf{x}} = \mathbf{n}\cdot\nabla f
 $$
 
 #### Change of coordinate system
@@ -58,27 +58,27 @@ $$
 $$
 
 $$
-\nabla f=\frac{\partial f}{\partial r}\hat\bf{r}+\frac{1}{r}\frac{\partial f}{\partial \theta}\hat{\boldsymbol{\theta}}+\frac{1}{r^2\sin\theta}\frac{\partial f}{\partial \phi}\hat{\boldsymbol{\phi}}
+\nabla f=\frac{\partial f}{\partial r}\mathbf{\hat r}+\frac{1}{r}\frac{\partial f}{\partial \theta}\hat{\boldsymbol{\theta}}+\frac{1}{r^2\sin\theta}\frac{\partial f}{\partial \phi}\hat{\boldsymbol{\phi}}
 $$
 
 Derivation ref: https://physics.stackexchange.com/questions/78510/derive-vector-gradient-in-spherical-coordinates-from-first-principles
 
 #### Divergence
 $$
-\mathrm{div} \ \bf{F} = \nabla \cdot \bf{F}
+\mathrm{div} \ \mathbf{F} = \nabla \cdot \mathbf{F}
 $$
 
-$\nabla \cdot \bf{F}|_{\bf{x}_0} > 0$ means there's positive flow outwards at $\bf{x}_0$
+$\nabla \cdot \mathbf{F}|_{\mathbf{x}_0} > 0$ means there's positive flow outwards at $\mathbf{x}_0$
 
 #### Curl
 $$
-\mathrm{curl} \ \bf{F} = \nabla \times \bf{F}
+\mathrm{curl} \ \mathbf{F} = \nabla \times \mathbf{F}
 $$
 
 $$
-\nabla \times \bf{F} =
+\nabla \times \mathbf{F} =
 \begin{vmatrix}
-\bf{i} & \bf{j} & \bf{k} \\
+\mathbf{i} & \mathbf{j} & \mathbf{k} \\
 \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\
 F_x & F_y & F_z
 \end{vmatrix}
@@ -86,16 +86,16 @@ $$
 
 #### Line integral
 $$
-\int_{\mathcal{C}} F(\bf{r})\mathrm{d}s=\int_a^b F(\bf{r}(t))|\bf{r}'(t)|\mathrm{d}t
+\int_{\mathcal{C}} F(\mathbf{r})\mathrm{d}s=\int_a^b F(\mathbf{r}(t))|\mathbf{r}'(t)|\mathrm{d}t
 $$
 
-where $\bf{r}: [a, b] \rightarrow \mathcal{C}$ is a bijective parametrization of $\mathcal{C}$
+where $\mathbf{r}: [a, b] \rightarrow \mathcal{C}$ is a bijective parametrization of $\mathcal{C}$
 ##### Gradient theorem (fundamental theorem of line integral)
 $$
-\int_a^b\nabla F(\bf{r}(t))\cdot \mathrm{d}\bf{r}=F(\bf{r}(b))-F(\bf{r}(a))
+\int_a^b\nabla F(\mathbf{r}(t))\cdot \mathrm{d}\mathbf{r}=F(\mathbf{r}(b))-F(\mathbf{r}(a))
 $$
 
-Note: $\mathrm{d}\bf{r} = \bf{r}'(t)\mathrm{d}t$
+Note: $\mathrm{d}\mathbf{r} = \mathbf{r}'(t)\mathrm{d}t$
 
 #### Green's theorem
 $$
@@ -106,22 +106,22 @@ Intepretation: macroscopic circulation around $\partial D$ is the same as sum of
 
 #### Divergence theorem
 $$
-\iiint_{D} \nabla \cdot \bf{F} \ \mathrm{d}V = \oiint_{\partial{D}}\big( \bf{F} \cdot \bf{\hat{n}} \big) \mathrm{d}S
+\iiint_{D} \nabla \cdot \mathbf{F} \ \mathrm{d}V = \oiint_{\partial{D}}\big( \mathbf{F} \cdot \mathbf{\hat{n}} \big) \mathrm{d}S
 $$
 
-$\bf{\hat{n}}$ is the outward-pointing unit normal vector to the surface $\partial{D}$
+$\mathbf{\hat{n}}$ is the outward-pointing unit normal vector to the surface $\partial{D}$
 
 Picking the normal to be $\langle \mathrm{d}y, -\mathrm{d}x, 0\rangle$, we get the Green's theorem for the 2D case
 
 #### Stoke's theorem
 
 $$
-\iint_{\Sigma} \big(\nabla \times \bf{F}\big)\cdot \mathrm{d} \bf{S} =\iint_{\Sigma} \big(\nabla \times \bf{F}\big)\cdot \bf{\hat{n}} \ \mathrm{d} S = \oint_{\partial \Sigma} \bf{F} \cdot \mathrm{d} \bf{r}
+\iint_{\Sigma} \big(\nabla \times \mathbf{F}\big)\cdot \mathrm{d} \mathbf{S} =\iint_{\Sigma} \big(\nabla \times \mathbf{F}\big)\cdot \mathbf{\hat{n}} \ \mathrm{d} S = \oint_{\partial \Sigma} \mathbf{F} \cdot \mathrm{d} \mathbf{r}
 $$
 
-where $\bf{r}$ is tangential to the curve $\partial \Sigma$, $\bf{\hat{n}}$ is the outward-pointing unit normal vector to the surface $\Sigma$ 
+where $\mathbf{r}$ is tangential to the curve $\partial \Sigma$, $\mathbf{\hat{n}}$ is the outward-pointing unit normal vector to the surface $\Sigma$ 
 
-Setting $\bf{k}=0$, we get Green's theorem. Stoke's theorem is just Green's theorem with a 2D surface floating in a 3D surface not necessarily on the x-y plane
+Setting $\mathbf{k}=0$, we get Green's theorem. Stoke's theorem is just Green's theorem with a 2D surface floating in a 3D surface not necessarily on the x-y plane
 
 ##### Ref:
 Green's theorem, Divergence theorem, and Stoke's theorem
