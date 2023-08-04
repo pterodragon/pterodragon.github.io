@@ -69,9 +69,12 @@ Inversely, fix $(x, t)$, another triangular region (upside down) is the *domain 
 
 ### Energy
 Conservation of energy:
-$$\text{KE} = \frac{1}{2}\rho \int_{-\infty}^{\infty} u_t^2 \mathrm{d} x 
 $$
-$$\text{PE} = \frac{1}{2}T \int_{-\infty}^{\infty} u_x^2 \mathrm{d} x 
+\text{KE} = \frac{1}{2}\rho \int_{-\infty}^{\infty} u_t^2 \mathrm{d} x
+$$
+
+$$
+\text{PE} = \frac{1}{2}T \int_{-\infty}^{\infty} u_x^2 \mathrm{d} x 
 $$
 
 $$
@@ -103,12 +106,14 @@ Let $u_1$ and $u_2$ be solutions of the Dirichlet problem for $\phi=\phi_1$ and 
 and for $h = g = f = 0$,
 
 stability in the square integral sense:
-$$\int_0^l[u_1 - u_2]^2 \mathrm{d}x \le \int_0^l [\phi_1 - \phi_2]^2 \mathrm{d}x
+$$
+\int_0^l[u_1 - u_2]^2 \mathrm{d}x \le \int_0^l [\phi_1 - \phi_2]^2 \mathrm{d}x
 $$
 proven by energy method
 
 stability in the uniform sense:
-$$\max_x{|u_1-u_2|} \le \max_x{|\phi_1-\phi_2|}
+$$
+\max_x{|u_1-u_2|} \le \max_x{|\phi_1-\phi_2|}
 $$
 proven by maximum principle
 
