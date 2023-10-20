@@ -5,6 +5,7 @@ import computer_networking_md from './assets/md/computer_networking/main.md?raw'
 import control_theory_md from './assets/md/control_theory/main.md?raw'
 import control_theory_math_review_md from './assets/md/control_theory/math_review.md?raw'
 import statistics_md from './assets/md/statistics/main.md?raw'
+import stochastic_calculus_md from './assets/md/stochastic_calculus/main.md?raw'
 import ReactMarkdown from 'react-markdown'
 import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
@@ -59,6 +60,11 @@ const ControlTheoryMathReviewMd = () => (<article><ReactMarkdown
 /></article>);
 const StatisticsMd = () => (<article><ReactMarkdown
     children={statistics_md}
+    remarkPlugins={[remarkMath]}
+    rehypePlugins={[rehypeKatex]}
+/></article>);
+const StochasticCalculusMd = () => (<article><ReactMarkdown
+    children={stochastic_calculus_md}
     remarkPlugins={[remarkMath]}
     rehypePlugins={[rehypeKatex]}
 /></article>);
@@ -133,6 +139,15 @@ const routes = [
         sidebar: () => (
             <p>
                 statistics md
+            </p>
+        )
+    },
+    {
+        path: "/stochastic-calculus-md",
+        main: () => <StochasticCalculusMd />,
+        sidebar: () => (
+            <p>
+                stochastic calculus md
             </p>
         )
     }
