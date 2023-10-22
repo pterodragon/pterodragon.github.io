@@ -91,3 +91,55 @@ $$
 then $X_n$ for $n \in [0, N-1]$ is a Markov process.
 
 (The martingale is a special case of this with $f(x)=x$ and $g(x)=x$. Not all martingale is a markov process as for every $f$ there must be a $g$, also not all markov process is a martingale)
+
+The stock price process is Markov (under actual or risk-neutral probability measure) because
+$$
+\mathbb{E}_n[f(S_n)] = g(S_n)
+$$
+$$
+g(x) = pf(ux) + qf(dx)
+$$
+
+Pricing of derivative security whose payoff at time $N$ is a function $v_n$ of the stock price $S_n$ i.e. $V_N = v_N(S_N)$:
+
+From risk-neutral pricing formula $(2.4.12)$, we can prove that $V_n = v_n(S_n)$ in general, and we can compute the functions $v_n$ by
+$$
+v_n(s) = \frac{1}{1+r}\bigg[\tilde{p}v_{n+1}(us) + \tilde{q}v_{n+1}(ds)\bigg], \enspace N = N - 1, N - 2, \dots, 0. \quad (2.5.2)
+$$
+For the call, $v_N(s) = (s - K)^+$; for the put, $v_N(s) = (K - s)^+$
+
+### Multi-step ahead Markov property
+If $X_n$ is a Markov process, then for any function $h$, there's another function $g$ s.t.
+$$
+\mathbb{E}_n[h(X_m)]=g(X_n), \enspace 0 \le n \le m \lt N. \quad (2.5.6)
+$$
+
+### Algorithm to compute price of security whose payoff is a function of a Markov process at time $N$
+#### Theorem $(2.5.8)$
+If $V_N = v_N(X_N)$ for a Markov process $X_n$ under the risk neutral probability measure $\mathbb{\tilde{P}}$, then by risk-neutral pricing formula $(2.4.11)$ and the multi-step ahead Markov property, then
+$$
+V_n = v_n(X_n), \enspace n \in [0, N]. \quad (2.5.10)
+$$
+And there's a recursive algorithm to compute $v_n$ depending on the underlying Markov process (same holds for multidimensional Markov process)
+
+# 4. American derivative securities
+## 4.2 Non-path dependent American derivatives
+In the $N$-period binomial, if the payoff of a derivative security is $g(S_N)$ at time $N$, by $(2.5.8)$ ($V_n = v_n(S_n)$), the risk-neutral pricing formula, and its Markov simplification $(2.5.2)$, the function $v_n$ of the stock at that time is defined by the European algorithm:
+$$
+v_N(s) = \max{\{g(s), 0\}}, \quad (4.2.1) \\
+v_n(s) = \frac{1}{1+r}\bigg[\tilde{p}v_{n+1}(us) + \tilde{q}v_{n+1}(ds)\bigg], \enspace N = N - 1, N - 2, \dots, 0. \quad (4.2.2)
+$$
+The replicating portfolio is
+$$
+\Delta_n = \frac{v_{n+1}(uS_n) - v_{n+1}(dS_n)}{(u-d)S_n}, \enspace n \in [0, N] \quad (4.2.3)
+$$
+
+For an American derivative security, the holder of the derivative security can exercise and receive payment $g(S_n)$ (this sections assumes payoff depends only on the current stock price $S_n$ at the time of exercise, not on the stock price path). Thus the portfolio that hedges a short position should have
+$$
+X_n \ge g(S_n), \enspace n \in [0, N]. \quad (4.2.4)
+$$
+The American algorithm:
+$$
+v_N(s) = \max{\{g(s), 0\}}, \quad (4.2.5) \\
+v_n(s) = \max{\bigg\{g(s), \frac{1}{1+r}\bigg[\tilde{p}v_{n+1}(us) + \tilde{q}v_{n+1}(ds)\bigg]\bigg\}}, \enspace N = N - 1, N - 2, \dots, 0. \quad (4.2.6)
+$$
