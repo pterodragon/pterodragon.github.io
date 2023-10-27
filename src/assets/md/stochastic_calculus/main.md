@@ -319,3 +319,57 @@ $$
 \mathrm{Var}{[W(t_{i+1})-W(t_i)]} = t_{i+1} - t_i \quad (3.3.3)
 $$
 
+## 3.4.2 Quadratic variation
+### Definition 3.4.1
+Let $f(t)$ be a function defined $0 \le t \le T$. The **quadratic variation** of $f$ up to time $T$ is 
+$$
+[f,f](T) = \lim_{\lVert\Pi\rVert\rightarrow 0}\sum_{j=0}^{n-1}[f(t_{j+1})-f(t_j)]^2. \quad (3.4.5)
+$$
+where $\Pi = \set{ t_0, t_1, \dots, t_n }$ and $0 = t_0 < t_1 < \cdots < t_n = T$.
+
+#### Remark 3.4.2
+Suppose the function $f$ has continuous derivative, then
+$$
+[f,f](T) = 0
+$$
+
+### Theorem 3.4.3
+Let $W$ be a Brownian motion. Then $[W,W](T)=T, \,\forall T \ge 0$ almost surely.
+
+Informally
+$$
+\mathrm{d}W(t)\mathrm{d}W(t) = \mathrm{d}t, \quad (3.4.10) 
+$$
+
+# 4 Stochastic Calculus
+## 4.2 Ito's Integral for Simple Integrands
+Assume $\Delta(t)$ to be a simple process. (constant in each subinterval)
+$$
+\int_0^T\Delta(t)\mathrm{d}W(t). \quad (4.2.1)
+$$
+
+For $t_k \le t \le t_{k+1}$,
+$$
+I(t) = \sum_{j=0}^{k-1}\Delta(t_j)[W(t_{j+1})-W(t_j)]+\Delta(t_k)[W(t)-W(t_k)]. \quad (4.2.2)
+$$
+
+Think of $\set{t_i}$ as the trading dates and think $\set{\Delta(t_i)}$ as the position taken in the asset at each trading date and held to the next trading date. (Note: this is the sum of the position times the stock price difference for the previous $k$ days + the current day gain/loss)
+
+Taking $t=t_n=T$, $(4.2.2)$ provides a definition of $(4.2.1)$.
+
+### Theorem 4.2.2 Ito isometry
+The Ito integral defined by $(4.2.2)$ satisfies
+$$
+\mathbb{E}I^2(t) = \mathbb{E}\int_0^t\Delta^2(u)\mathrm{d}u. \quad (4.2.6)
+$$
+
+### Theorem 4.2.3
+The quadratic variation accumulated up to time $t$ by the Ito integral $(4.2.2)$ is
+$$
+[I,I](t) = \int_0^T\Delta^2(u)\mathrm{d}u. \quad (4.2.8)
+$$
+
+The Ito integral can be written in differential form as $\mathrm{d}I(t) = \Delta(t)\mathrm{d}W(t)$. Then with $(3.4.10)$,
+$$
+\mathrm{d}I(t)\mathrm{d}I(t) = \Delta^2(t)\mathrm{d}t. \quad (4.2.10)
+$$
