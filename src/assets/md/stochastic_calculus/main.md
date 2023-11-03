@@ -342,7 +342,7 @@ $$
 $$
 
 # 4 Stochastic Calculus
-## 4.2 Ito's Integral for Simple Integrands
+## 4.2 Ito's Integral for simple integrands
 Assume $\Delta(t)$ to be a simple process. (constant in each subinterval)
 $$
 \int_0^T\Delta(t)\mathrm{d}W(t). \quad (4.2.1)
@@ -372,4 +372,99 @@ $$
 The Ito integral can be written in differential form as $\mathrm{d}I(t) = \Delta(t)\mathrm{d}W(t)$. Then with $(3.4.10)$,
 $$
 \mathrm{d}I(t)\mathrm{d}I(t) = \Delta^2(t)\mathrm{d}t. \quad (4.2.10)
+$$
+
+## 4.3 Ito's Integral for general integrands
+This section no longer assumes $\Delta(t)$ is a simple process. Assume that $\Delta(t), t\ge 0$ is adapted to the filtration $\mathcal{F}(t), t \ge 0$. Also assume the square integrability condition
+
+$$
+\mathbb{E}\int_0^T \Delta^2(t) \mathrm{d} t < \infty \quad (4.3.1)
+$$
+
+Choose a sequence $\Delta_n(t)$ of simple processes s.t. these processes converge to the continuously varying $\Delta(t)$. By "converge", 
+$$
+\lim_{n\rightarrow \infty} \mathbb{E} \int_0^T |\Delta_n(t) - \Delta(t)|^2 \mathrm{d} t = 0 \quad (4.3.2)
+$$
+Define the Ito integral for the continuously varying integrand $\Delta(t)$ by the formula
+$$
+\int_0^t \Delta(u) \mathrm{d} W(u) = \lim_{n\rightarrow \infty} \int_0^t \Delta_n(u) \mathrm{d} W(u), \enspace 0 \le t \le T. \quad (4.3.3)
+$$
+
+### Theorem 4.3.1
+Let $T$ be a positive constant and let $\Delta(t), 0 \le t \le T$ be an adapted stochastic process that satisfies $(4.3.1)$. The $I(t) = \int_0^T \mathrm{d} W(u)$ defined by $(4.3.3)$ has the following properties.
+
+- (i) (Continuity) The paths of $I(t)$ are continuous. 
+- (ii) (Adaptivity) for each $t$, $I(t)$ is $\mathcal{F}(t)$-measurable.
+- (iii) (Linearity)
+- (iv) (Martingale) $I(t)$ is a martingale.
+- (v) (Ito isometry) $\mathbb{E}I^2(t) = \mathbb{E} \int_0^t \Delta^2(u) \mathrm{d} u$.
+- (vi) (Quadratic variation) $[I,I](t) = \int_0^t \Delta^2(u)\mathrm{d}u$.
+
+## 4.4 Ito-Doeblin formula
+### 4.4.1 Formula for Brownian motion
+("Chain rule" for stochastic calculus) Ito-Doeblin formula in differential form:
+$$
+\mathrm{d}f(W(t)) = f'(W(t))\mathrm{d}W(t) + \frac{1}{2} f''(W(t)) \mathrm{d} t. \quad (4.4.1)
+$$
+Ito-Doeblin formula in integral form:
+$$
+f(W(t)) - f(W(0)) = \int_0^t f'(W(u))\mathrm{d} W(u) + \frac{1}{2} \int_0^t f''(W(u)) \mathrm{d} u. \quad (4.4.2)
+$$
+
+### Theorem 4.4.1 Ito Doeblin formula for Brownian motion
+Let $f(t,x)$ be a function for which $f_t(t,x), f_x(t,x), f_{xx}(t,x)$ are defined and continuous, and let $W(t)$ be a Brownian motion. Then $\forall T \ge 0,$
+$$
+f\big(T, W(T)\big) = f\big(0, W(0)\big) + \int_0^Tf_t\big(t, W(t)\big) \mathrm{d} t \\ 
++ \int_0^T f_x\big(t,W(t)\big) \mathrm{d}W(t) + \frac{1}{2} \int_0^T f_{xx}\big(t,W(t)\big) \mathrm{d}t. \quad (4.4.3)
+$$
+
+### Remark 4.4.2
+In the differential form,
+$$
+\mathrm{d}W(t)\,\mathrm{d}W(t) = \mathrm{d}t, \quad \mathrm{d}t \,\mathrm{d}W(t)=\mathrm{d}W(t)\,\mathrm{d}t=0, \quad \mathrm{d}t\,\mathrm{d}t = 0, \quad (4.4.12)
+$$
+
+### 4.4.2 Formula for Ito processes
+### Definition 4.4.3
+Let $W(t), t \ge 0$, be a Brownian motion, and let $\mathcal{F}(t), t \ge 0$, be an associated filtration. An Ito process is a stochastic process of the form
+$$
+X(t) = X(0) + \int_0^t \Delta(u)\mathrm{d}W(u) + \int_0^t \Theta(u) \mathrm{d} u, \quad (4.4.16)
+$$
+where $X(0)$ is nonrandom and $\Delta(u)$ and $\Theta(u)$ are adapted stochastic processes.
+
+### Lemma 4.4.4
+The quadratic variation of the Ito process $(4.4.16)$ is 
+$$
+[X,X](t) = \int_0^t\Delta^2(u) \mathrm{d} u \quad (4.4.17)
+$$
+
+$$
+\mathrm{d}X(t) = \Delta(t)\mathrm{d}W(t) + \Theta(t)\mathrm{d}t \quad (4.4.18)
+$$
+Using $(4.4.12)$,
+$$
+\mathrm{d}X(t)\,\mathrm{d}X(t) = \Delta^2(t)\mathrm{d}t \quad (4.4.19)
+$$
+
+### Definition 4.4.5
+Let $X(t), t \ge 0$, be an Ito process as described in Definition $(4.4.3)$, and let $\Gamma(t), t \ge 0$, be an adapted process. We define the integral with respect to an Ito process
+$$
+\int_0^t\Gamma(u)\mathrm{d}X(u) = \int_0^t\Gamma(u)\Delta(u)\mathrm{d}W(u) + \int_0^t\Gamma(u)\Theta(u)\mathrm{d}u. \quad (4.4.20)
+$$
+
+### Theorem 4.4.6 Ito Doeblin formula for an Ito process
+Let $X(t), t \ge 0$ be an Ito process as describedin Definition $(4.4.3)$, and let $f(t, x)$ be a function for which $f_t(t,x), f_x(t,x), f_{xx}(t,x)$ are defined and continuous. Then $\forall T \ge 0,$
+
+$$
+f\big(T, X(T)\big) \\
+= f\big(0, X(0)\big) + \int_0^Tf_t\big(t, X(t)\big) \mathrm{d} t \\ 
++ \int_0^T f_x\big(t,X(t)\big) \mathrm{d}X(t) + \frac{1}{2} \int_0^T f_{xx}\big(t,X(t)\big) \mathrm{d}[X,X](t) \\
+= f\big(0, X(0)\big) + \int_0^Tf_t\big(t, X(t)\big) \mathrm{d} t \\ 
++ \int_0^T f_x\big(t,X(t)\big) \Delta(t)\mathrm{d}W(t) + \int_0^Tf_x\big(t,X(t)\big)\Theta(t)\mathrm{d}t + \frac{1}{2} \int_0^T f_{xx}\big(t,X(t)\big) \Delta^2(t)\mathrm{d}t. \quad (4.4.22)
+$$
+
+### Remark 4.4.7
+Differential notation of $(4.4.22)$
+$$
+\mathrm{d}f\big(t,X(t)\big) = f_t\big(t,X(t)\big)\mathrm{d}t+f_x\big(t,X(t)\big)\mathrm{d}X(t) + \frac{1}{2}f_{xx}\big(t, X(t)\big)\mathrm{d}X(t)\,\mathrm{d}X(t). \quad(4.4.23)
 $$
