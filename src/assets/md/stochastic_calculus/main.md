@@ -456,15 +456,128 @@ $$
 Let $X(t), t \ge 0$ be an Ito process as describedin Definition $(4.4.3)$, and let $f(t, x)$ be a function for which $f_t(t,x), f_x(t,x), f_{xx}(t,x)$ are defined and continuous. Then $\forall T \ge 0,$
 
 $$
-f\big(T, X(T)\big) \\
-= f\big(0, X(0)\big) + \int_0^Tf_t\big(t, X(t)\big) \mathrm{d} t \\ 
-+ \int_0^T f_x\big(t,X(t)\big) \mathrm{d}X(t) + \frac{1}{2} \int_0^T f_{xx}\big(t,X(t)\big) \mathrm{d}[X,X](t) \\
-= f\big(0, X(0)\big) + \int_0^Tf_t\big(t, X(t)\big) \mathrm{d} t \\ 
-+ \int_0^T f_x\big(t,X(t)\big) \Delta(t)\mathrm{d}W(t) + \int_0^Tf_x\big(t,X(t)\big)\Theta(t)\mathrm{d}t + \frac{1}{2} \int_0^T f_{xx}\big(t,X(t)\big) \Delta^2(t)\mathrm{d}t. \quad (4.4.22)
+\begin{align*}
+& f\big(T, X(T)\big) \\
+= & f\big(0, X(0)\big) + \int_0^Tf_t\big(t, X(t)\big) \mathrm{d} t \\
+& + \int_0^T f_x\big(t,X(t)\big) \mathrm{d}X(t) + \frac{1}{2} \int_0^T f_{xx}\big(t,X(t)\big) \mathrm{d}[X,X](t) \\
+= & f\big(0, X(0)\big) + \int_0^Tf_t\big(t, X(t)\big) \mathrm{d} t \\
+& + \int_0^T f_x\big(t,X(t)\big) \Delta(t)\mathrm{d}W(t) + \int_0^Tf_x\big(t,X(t)\big)\Theta(t)\mathrm{d}t + \frac{1}{2} \int_0^T f_{xx}\big(t,X(t)\big) \Delta^2(t)\mathrm{d}t. \quad (4.4.22)
+\end{align*}
 $$
 
 ### Remark 4.4.7
 Differential notation of $(4.4.22)$
 $$
 \mathrm{d}f\big(t,X(t)\big) = f_t\big(t,X(t)\big)\mathrm{d}t+f_x\big(t,X(t)\big)\mathrm{d}X(t) + \frac{1}{2}f_{xx}\big(t, X(t)\big)\mathrm{d}X(t)\,\mathrm{d}X(t). \quad(4.4.23)
+$$
+
+### Theorem 4.4.9 Ito integral for a deterministic integrand
+Let $W(s), s \ge 0$ be a Brownian motion, and let $\Delta(s)$ be a nonrandom *function of time*. Define $I(t) = \int_0^t\Delta(s)\mathrm{d}W(s)$. $\forall t \ge 0$, the random variable $I(t) \sim \mathcal{N}\big(0, \int_0^t\Delta(s)\mathrm{d}s\big)$.
+
+## 4.5 Black Scholes Merton Equation
+### 4.5.1 Evolution of portfolio value
+Stock modeled by:
+$$
+\mathrm{d}S(t) = \alpha S(t) \mathrm{d}t + \sigma S(t)\mathrm{d}W(t) \quad (4.5.1)
+$$
+Remainder of the portfolio $X(t) - \Delta(t)S(t)$ is invested into the money market. Differential of portfolio value:
+$$
+\begin{align*}
+\mathrm{d}X(t) & = \Delta(t)\mathrm{d}S(t)+r\big(X(t)-\Delta(t)s(t)\big)\mathrm{d}t \\
+& = rX(t)\mathrm{d}t+\Delta(t)(\alpha-r)S(t)\mathrm{d}t+\Delta(t)\sigma S(t)\mathrm{d}W(t). \quad (4.5.2)
+\end{align*}
+$$
+Let $f(t,x) = e^{-rt}x$ and use the Ito-Doeblin formula,
+differential of discounted stock price:
+$$
+\mathrm{d}\big(e^{-rt}S(t)\big) = (\alpha - r)e^{-rt}S(t)\mathrm{d}t+\sigma e^{rt}S(t)\mathrm{d}W(t). \quad (4.5.4)
+$$
+Differential of discounted portfolio value:
+$$
+\mathrm{d}\big(e^{-rt}X(t)\big) = \Delta(t)\mathrm{d}\big(e^{-rt}S(t)\big). \quad (4.5.5)
+$$
+
+### 4.5.2 Evolution of option value
+Consider an European call option that pays $\big(S(T)-K\big)^+$ at time $T$, and $K > 0$. Let $c(t,x)$ denote the value of the call at time $t$ if the stock price at that time is $S(t) = x$.
+
+The function $c(t, x)$ is nonrandom but $c\big(t, S(t)\big)$ is a stochastic process. Differential of $c\big(t, S(t)\big)$:
+
+$$
+\mathrm{d}c\big(t, S(t)\big) \\
+= \bigg[c_t\big(t, S(t)\big)+\alpha S(t)c_x\big(t, S(t)\big) + \frac{1}{2}\sigma^2S^2(t)c_{xx}\big(t, S(t)\big)\bigg] \mathrm{d}t \\ 
++ \sigma S(t) c_x\big(t, S(t)\big)\mathrm{d}W(t). \quad (4.5.6)
+$$
+
+Let $f(t,x) = e^{-rt}x$ and use the Ito-Doeblin formula, differential of discounted option price:
+$$
+\mathrm{d}\big(e^{-rt}c(t, S(t))\big) \\
+= e^{-rt}\bigg[-rc\big(t, S(t)\big)+c_t\big(t,S(t)\big) + \alpha S(t)c_x\big(t, S(t)\big) + \frac{1}{2}\sigma^2S^2(t)c_{xx}\big(t, S(t)\big)\bigg] \mathrm{d}t \\ 
++ e^{-rt}\sigma S(t) c_x\big(t, S(t)\big)\mathrm{d}W(t). \quad (4.5.7)
+$$
+
+### 4.5.3 Equating the evolution
+A (short option) hedging portfolio starts with some initial capital $X(0)$ and invests in the stock and money market account so that the portfolio value $X(t)$ at each time $t\in [0,T]$ agrees with $c\big(t, S(t)\big)$. This happens iff
+$$
+\mathrm{d}\big(e^{-rt}X(t)\big) = \mathrm{d}\big(e^{-rt}c\big(t,S(t)\big)\big) \enspace \forall t \in [0,T). \quad (4.5.8)
+$$
+and make $X(0) = c\big(0, S(0)\big)$
+
+Comparing $(4.5.5)$ and $(4.5.7)$, $(4.5.8)$ holds iff
+$$
+\begin{align*}
+& \Delta(t)(\alpha-r)S(t)\mathrm{d}t+\Delta(t)\sigma S(t)\mathrm{d}W(t) \\
+= & \bigg[-rc\big(t, S(t)\big)+c_t\big(t,S(t)\big) + \alpha S(t)c_x\big(t, S(t)\big) + \frac{1}{2}\sigma^2S^2(t)c_{xx}\big(t, S(t)\big)\bigg] \mathrm{d}t \\ 
+& + \sigma S(t) c_x\big(t, S(t)\big)\mathrm{d}W(t). \quad (4.5.10)
+\end{align*}
+$$
+Equating the $\mathrm{d}W(t)$ terms gives the *delta-hedging rule*
+$$
+\Delta(t)= c_x\big(t, S(t)\big) \enspace \forall t \in [0,T). \quad (4.5.11)
+$$
+The quantity $c_x\big(t, S(t)\big)$ is called *delta* of the option.
+
+Equating the $\mathrm{d}t$ terms gives
+$$
+rc\big(t, S(t)\big) = c_t\big(t,S(t)\big) + rS(t)c_x\big(t, S(t)\big) + \frac{1}{2}\sigma^2S^2(t)c_{xx}\big(t, S(t)\big) \enspace \forall t \in [0,T). \quad (4.5.13)
+$$
+
+In conclusion we should see a continous function $c(t,x)$ that is a solution to the **Black-Scholes-Merton partial differential equation**
+$$
+ c_t(t,x) + rxc_x(t, x) + \frac{1}{2}\sigma^2S^2(t)c_{xx}(t, x) =rc(t, x) \enspace \forall t \in [0,T), \, x \ge 0 \quad (4.5.14)
+$$
+that satisfies the terminal condition
+$$
+c(T,x) = (x - K)^+. \quad (4.5.15)
+$$
+
+Equation $(4.5.14)$ is a PDE of the type called backward parabolic. For such equation, in addition to the terminal condition $(4.5.15)$, boundary conditions at $x = 0$ and $x = \infty$ are needed in order to determine the solution. Boundary condition at $x = 0$ is obtained by substituting $x = 0$ into $(4.5.14)$:
+$$
+c_t(t, 0) = rc(t, 0). \quad (4.5.16)
+$$
+The solution to this ODE is $ c(t, 0) = e^{rt}c(0,0). $
+
+Substituting $t = T$ and by the fact that $c(T, 0) = (0 - K)^+ = 0$, then $c(0,0) = 0$, so *boundary condition at $x = 0$* is
+$$
+c(t, 0) = 0 \enspace \forall t \in [0, T]. \quad (4.5.17)
+$$
+
+As $x \rightarrow \infty$, the function $c(t,x)$ grows without bound. In such a case, the *boundary condition at $x = \infty$* is specified by the rate of growth. One way to do this is:
+$$
+\lim_{x\rightarrow\infty} \big[c(t,x)-(x-e^{-r(T-t)}K)\big] = 0 \enspace \forall t \in [0,T]. \quad (4.5.18)
+$$
+The solution to the Black-Scholes-Merton equation $(4.5.14)$ with terminal condition $(4.5.15)$ and boundary conditions $(4.5.17)$ and $(4.5.18)$ is
+$$
+c(t,x) = xN\big(d_{+}(T-t)x\big) - Ke^{-r(T-t)}N\big(d_{-}(T-t,x)\big), 0 \le t \lt T, x > 0, \quad (4.5.19)
+$$
+where
+$$
+d_{\plusmn}(\tau, x) = \frac{1}{\sigma \sqrt{\tau}}\bigg[\log\frac{x}{K}+\bigg(r \plusmn \frac{\sigma^2}{2}\bigg)\tau\bigg], \quad (4.5.20)
+$$
+and $N$ is the cumulative standard normal distribution
+$$
+N(y) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^y e^{-\frac{z^2}{2}}\mathrm{d}z = \frac{1}{\sqrt{2\pi}}\int_y^{-\infty}e^{-\frac{z^2}{2}}\mathrm{d}z \quad (4.5.21)
+$$
+notation: Call this function Black-Scholes-Merton function
+$$
+\textrm{BSM}(\tau,x;K,r,\sigma) = x N\big(d_{+}(\tau, x)\big) - Ke^{-r\tau}N\big(d_{-}(\tau, x)\big), \quad (4.5.22)
 $$
