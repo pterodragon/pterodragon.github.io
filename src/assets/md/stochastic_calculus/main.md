@@ -530,7 +530,7 @@ $$
 & + \sigma S(t) c_x\big(t, S(t)\big)\mathrm{d}W(t). \quad (4.5.10)
 \end{align*}
 $$
-Equating the $\mathrm{d}W(t)$ terms gives the *delta-hedging rule*
+Equating the $\mathrm{d}W(t)$ terms gives the **delta-hedging rule**
 $$
 \Delta(t)= c_x\big(t, S(t)\big) \enspace \forall t \in [0,T). \quad (4.5.11)
 $$
@@ -543,12 +543,14 @@ $$
 
 In conclusion we should see a continous function $c(t,x)$ that is a solution to the **Black-Scholes-Merton partial differential equation**
 $$
- c_t(t,x) + rxc_x(t, x) + \frac{1}{2}\sigma^2S^2(t)c_{xx}(t, x) =rc(t, x) \enspace \forall t \in [0,T), \, x \ge 0 \quad (4.5.14)
+ c_t(t,x) + rxc_x(t, x) + \frac{1}{2}\sigma^2x^2c_{xx}(t, x) =rc(t, x) \enspace \forall t \in [0,T), \, x \ge 0 \quad (4.5.14)
 $$
 that satisfies the terminal condition
 $$
 c(T,x) = (x - K)^+. \quad (4.5.15)
 $$
+
+### 4.5.4 Solution to the Black-Scholes-Merton Equation
 
 Equation $(4.5.14)$ is a PDE of the type called backward parabolic. For such equation, in addition to the terminal condition $(4.5.15)$, boundary conditions at $x = 0$ and $x = \infty$ are needed in order to determine the solution. Boundary condition at $x = 0$ is obtained by substituting $x = 0$ into $(4.5.14)$:
 $$
@@ -567,7 +569,7 @@ $$
 $$
 The solution to the Black-Scholes-Merton equation $(4.5.14)$ with terminal condition $(4.5.15)$ and boundary conditions $(4.5.17)$ and $(4.5.18)$ is
 $$
-c(t,x) = xN\big(d_{+}(T-t)x\big) - Ke^{-r(T-t)}N\big(d_{-}(T-t,x)\big), 0 \le t \lt T, x > 0, \quad (4.5.19)
+c(t,x) = xN\big(d_+(T-t,x)\big) - Ke^{-r(T-t)}N\big(d_-(T-t,x)\big), 0 \le t \lt T, x > 0, \quad (4.5.19)
 $$
 where
 $$
@@ -579,5 +581,66 @@ N(y) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^y e^{-\frac{z^2}{2}}\mathrm{d}z = \fr
 $$
 notation: Call this function Black-Scholes-Merton function
 $$
-\textrm{BSM}(\tau,x;K,r,\sigma) = x N\big(d_{+}(\tau, x)\big) - Ke^{-r\tau}N\big(d_{-}(\tau, x)\big), \quad (4.5.22)
+\textrm{BSM}(\tau,x;K,r,\sigma) = x N\big(d_+(\tau, x)\big) - Ke^{-r\tau}N\big(d_-(\tau, x)\big), \quad (4.5.22)
 $$
+
+### 4.5.5 The Greeks
+The derivatives of the function $c(t,x)$ of $(4.5.19)$ with respect to various variables are called the *Greeks*.
+
+*Delta*:
+$$
+c_x(t,x) = N\big(d_+(T-t, x)\big)
+$$
+Derived by considering $d_-^2-d_+^2 = (d_-+d_+)(d_--d_+) = -2\big[\log \frac{x}{K} +r(T-t)\big]$ and $Ke^{-r(T-t)}N'(d_-) = xN'(d_+)$
+
+*Theta*:
+$$
+c_t(t,x) = -rKe^{r(T-t)}N\big(d_-(T-t,x)\big) - \frac{\sigma x}{2\sqrt{T-t}} N'\big(d_+(T-t, x)\big). \quad (4.5.24)
+$$
+
+Note $c_x(t,x) > 0, \enspace c_t(t,x) < 0$ due to $N,N' > 0$
+
+*Gamma*:
+$$
+c_{xx}(t,x) = N'\big(d_+(T-t, x)\big)\frac{\partial}{\partial x} d_+(T-t, x) = \frac{1}{\sigma x \sqrt{T-t}}N'\big(d_+(T-t, x)\big). \quad (4.5.25)
+$$
+
+Note $c_{xx}(t,x) > 0$
+
+If at time $t$ the stock price is $x$, the the short option hedge of $(4.5.11)$ calls for holding $c_x(t,x)$ shares of stock, position value is $xc_x = xN(d_+)$. Hedging portfolio value is $c = xN(d_+) - Ke^{r(T-t)}N(d_-)$, of which $xc_x(t,x)$ is invested in stock. The amount invested in the money market must be
+$$
+c(t,x) -xc_x(t,x) = -Ke^{-r(T-t)}N(d_-) < 0
+$$
+To hedge a short position in a call option, one must borrow money.
+
+Note that the portfolio benefits from both instantaneous drop or rise in the stock price. This portfolio is said to be *delta-neutral* ($y=c(t,x)$ is tangent to $c_x(t, x_1)(x-x_1)+c(t,x_1)$ where $x_1$ is the original stock value) and *long gamma* (benefits from the convexity of $c(t,x)$). *Short-delta* means the straight line approximation to the option price for small stock price moves were steeper than the option price curve at the starting point $x_1$
+
+The derivative $\frac{\partial}{\partial \sigma} c$ is called *vega* and is positive. The more volatile the stock is, the high the option price in the BSM model.
+
+### 4.5.6 Put-Call Parity
+A **forward contract** with delivery price $K$ obligates its holder to buy one share of the stock at expiration time $T$ in exchange for payment $K$. At expiration, the value of the forward contract is $S(T) -K$. Let $f(t,x)$ denote the value of the forward contract at earlier times $t \in [0,T]$ if the stock price at time $t$ is $S(t) = x$.
+
+The value of a forward contract is given by
+$$
+f(t,x) = x - e^{-r(T-t)}K. \quad (4.5.26)
+$$
+
+The **forward price** of a stock at time $t$ is defined to be the value of $K$ that causes the forward contract at time $t$ to have value zero. (i.e. value of $K$ s.t. $S(t) - e^{-r(T-t)}K = 0$). In a model with a constant interest rate, the forward price at time $t$ is
+$$
+\mathrm{For}(t) = e^{r(T-t)}S(t). \quad (4.5.27)
+$$
+
+Consider a *European put*, which pays off $(K-S(t))^+$ at time $T$. Observe $\forall x$,
+$$
+x - K = (x - K)^+ - (K - x)^+ \quad (4.5.28)
+$$
+Denote $p(t,x)$ the value of the European put at time $t$ if the time-$t$ stock price is $S(t) = x$. Similarly $c(t,x)$ for the value of the European call. $(4.5.28)$ implies
+$$
+f(T, S(T)) = c(T, S(T)) - p(T,S(T))
+$$
+And thus by continuity, the *put-call parity*
+$$
+f(t, x) = c(t, x) - p(t,x), \enspace x \ge 0, \enspace 0 \le t \le T. \quad (4.5.29)
+$$
+
+For Black-Scholes-Merton put formula, solve $(4.5.29)$ for $f(t,x)$ given by $(4.5.26)$ and BSM call formula by $(4.5.19).
