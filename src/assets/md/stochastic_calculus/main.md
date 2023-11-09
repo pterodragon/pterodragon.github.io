@@ -45,21 +45,21 @@ X_n(\omega_1\omega_2\dots\omega_n) = V_n(\omega_1\omega_2\dots\omega_n). \tag{1.
 $$
 
 # 2 Probability theory on Coin Toss Space
-Define $\mathbb{\tilde{E}}_n{[X]}$ to be the conditional expectation of the random variable $X$ based on information at time n (using risk neutral probabilities $\tilde p$ and $\tilde q$)
+Define $\mathbb{\widetilde{E}}_n{[X]}$ to be the conditional expectation of the random variable $X$ based on information at time n (using risk neutral probabilities $\tilde p$ and $\tilde q$)
 
 $$
 S_n(\omega_1\omega_2\dots\omega_n) = \frac{1}{1+r}[\tilde p S_{n+1}(\omega_1\omega_2\dots\omega_nH) + \tilde q S_{n+1}(\omega_1\omega_2\dots\omega_nT)]. \tag{2.3.3}
 $$
 $$
-\mathbb{\tilde{E}}[S_{n+1}]_n(\omega_1\omega_2\dots\omega_n) = \tilde p S_{n+1}(\omega_1\omega_2\dots\omega_nH) + \tilde q S_{n+1}(\omega_1\omega_2\dots\omega_nT). \tag{2.3.4}
+\mathbb{\widetilde{E}}[S_{n+1}]_n(\omega_1\omega_2\dots\omega_n) = \tilde p S_{n+1}(\omega_1\omega_2\dots\omega_nH) + \tilde q S_{n+1}(\omega_1\omega_2\dots\omega_nT). \tag{2.3.4}
 $$
 $$
-S_n = \frac{1}{1+r}\mathbb{\tilde{E}}_n[S_{n+1}]. \tag{2.3.5}
+S_n = \frac{1}{1+r}\mathbb{\widetilde{E}}_n[S_{n+1}]. \tag{2.3.5}
 $$
 
 ## 2.4 Martingales
 $$
-\frac{S_n}{{(1+r)}^n} = \mathbb{\tilde{E}}_n\bigg[\frac{S_{n+1}}{{(1+r)}^{n+1}}\bigg]. \tag{2.4.1}
+\frac{S_n}{{(1+r)}^n} = \mathbb{\widetilde{E}}_n\bigg[\frac{S_{n+1}}{{(1+r)}^{n+1}}\bigg]. \tag{2.4.1}
 $$
 This says best estimate based on the information at time $n$ of the value of the discounted stock price at time $n+1$ is the discounted stock price at time $n$. The risk neutral probabilities are chosen to enforce this fact. Processes that satisfy this condition is called martingales.
 
@@ -72,15 +72,15 @@ $$
 then this process is a martingale
 
 $$
-\frac{X_n}{{(1+r)}^n} = \mathbb{\tilde{E}}_n\bigg[\frac{X_{n+1}}{{(1+r)}^{n+1}}\bigg], \enspace n \in [0, N-1]. \tag{2.4.7}
+\frac{X_n}{{(1+r)}^n} = \mathbb{\widetilde{E}}_n\bigg[\frac{X_{n+1}}{{(1+r)}^{n+1}}\bigg], \enspace n \in [0, N-1]. \tag{2.4.7}
 $$
 $$
-\mathbb{\tilde{E}}_n\bigg[\frac{X_{n}}{{(1+r)}^{n}}\bigg] = X_0, \enspace n \in [0, N]. \tag{2.4.8}
+\mathbb{\widetilde{E}}_n\bigg[\frac{X_{n}}{{(1+r)}^{n}}\bigg] = X_0, \enspace n \in [0, N]. \tag{2.4.8}
 $$
 
 ### Risk neutral pricing formula
 $$
-\frac{V_n}{{(1+r)}^n} = \mathbb{\tilde{E}}_n\bigg[\frac{V_{n+1}}{{(1+r)}^{n+1}}\bigg], \enspace n \in [0, N-1]. \tag{2.4.12}
+\frac{V_n}{{(1+r)}^n} = \mathbb{\widetilde{E}}_n\bigg[\frac{V_{n+1}}{{(1+r)}^{n+1}}\bigg], \enspace n \in [0, N-1]. \tag{2.4.12}
 $$
 
 ## 2.5 Markov processes
@@ -116,7 +116,7 @@ $$
 
 ### Algorithm to compute price of security whose payoff is a function of a Markov process at time $N$
 #### Theorem $(2.5.8)$
-If $V_N = v_N(X_N)$ for a Markov process $X_n$ under the risk neutral probability measure $\mathbb{\tilde{P}}$, then by risk-neutral pricing formula $(2.4.11)$ and the multi-step ahead Markov property, then
+If $V_N = v_N(X_N)$ for a Markov process $X_n$ under the risk neutral probability measure $\mathbb{\widetilde{P}}$, then by risk-neutral pricing formula $(2.4.11)$ and the multi-step ahead Markov property, then
 $$
 V_n = v_n(X_n), \enspace n \in [0, N]. \tag{2.5.10}
 $$
@@ -186,27 +186,27 @@ is in the $\sigma$-algebra $\mathcal{F}$. (Sometimes a random variable taking va
 ### Theorem 1.6.1
 Let $(\Omega,\mathcal{F},\mathbb{P})$ be a probability space and let $Z$ be an almost surely nonnegative random variable with $\mathbb{E}Z=1$. For $A \in \mathcal{F}$, define
 $$
-\mathbb{\tilde{P}}(A) = \int_A Z(\omega) \mathrm{d} \mathbb{P}(\omega). \tag{1.6.3}
+\mathbb{\widetilde{P}}(A) = \int_A Z(\omega) \mathrm{d} \mathbb{P}(\omega). \tag{1.6.3}
 $$
-Then $\mathbb{\tilde{P}}$ is a probability measure. Furthermore, if $X$ is a nonnegative random variable, then
+Then $\mathbb{\widetilde{P}}$ is a probability measure. Furthermore, if $X$ is a nonnegative random variable, then
 $$
-\mathbb{\tilde{E}}X = \mathbb{E}[XZ]. \tag{1.6.4}
+\mathbb{\widetilde{E}}X = \mathbb{E}[XZ]. \tag{1.6.4}
 $$
 If $Z$ is almost surely strictly positive, we also have
 $$
-\mathbb{E}Y = \mathbb{\tilde{E}}\bigg[\frac{Y}{Z}\bigg] \tag{1.6.5}
+\mathbb{E}Y = \mathbb{\widetilde{E}}\bigg[\frac{Y}{Z}\bigg] \tag{1.6.5}
 $$
 for every nonnegative random variable $Y$.
 
-Note $\mathbb{\tilde{E}}X = \int_\Omega X(\omega) \mathrm{d} \mathbb{\tilde{P}}(\omega)$.
+Note $\mathbb{\widetilde{E}}X = \int_\Omega X(\omega) \mathrm{d} \mathbb{\widetilde{P}}(\omega)$.
 
 ### Definition 1.6.3
-Let $\Omega$ be a nonempty set and $\mathcal{F}$ a $\sigma$-algebra of subsets of $\Omega$. Two probability measures $\mathbb{P}$ and $\mathbb{\tilde{P}}$ on $(\Omega, \mathcal{F})$ are said to be equivalent if they agree which sets in $\mathcal{F}$ have probability zero.
+Let $\Omega$ be a nonempty set and $\mathcal{F}$ a $\sigma$-algebra of subsets of $\Omega$. Two probability measures $\mathbb{P}$ and $\mathbb{\widetilde{P}}$ on $(\Omega, \mathcal{F})$ are said to be equivalent if they agree which sets in $\mathcal{F}$ have probability zero.
 
 ### Definition 1.6.5
-Let $(\Omega,\mathcal{F},\mathbb{P})$ be a probability space, let $\mathbb{\tilde{P}}$ be another probability measure on $(\Omega,\mathcal{F})$ that is equivalent to $\mathbb{P}$, and let $Z$ be an almost surely positive random variable that relates $\mathbb{P}$ and $\mathbb{\tilde{P}}$ via $(1.6.3)$. Then $Z$ is called the Radon-Nikodym derivative of $\mathbb{\tilde{P}}$ with respect to $\mathbb{P}$, written
+Let $(\Omega,\mathcal{F},\mathbb{P})$ be a probability space, let $\mathbb{\widetilde{P}}$ be another probability measure on $(\Omega,\mathcal{F})$ that is equivalent to $\mathbb{P}$, and let $Z$ be an almost surely positive random variable that relates $\mathbb{P}$ and $\mathbb{\widetilde{P}}$ via $(1.6.3)$. Then $Z$ is called the Radon-Nikodym derivative of $\mathbb{\widetilde{P}}$ with respect to $\mathbb{P}$, written
 $$
-Z= \frac{\mathrm{d}\mathbb{\tilde{P}}}{\mathrm{d}\mathbb{P}}.
+Z= \frac{\mathrm{d}\mathbb{\widetilde{P}}}{\mathrm{d}\mathbb{P}}.
 $$
 
 # 2 Information and conditioning
@@ -234,6 +234,48 @@ $$
 $$
 
 Let $X$ and $Y$ be random variables on $(\Omega, \mathcal{F}, \mathbb{P})$. We say these two **random variables are independent** if the $\sigma$-algebras they generate, $\sigma(X)$ and $\sigma(Y)$, are independent. We say that the random variable $X$ is **independent of the $\sigma$-algebra** $\mathcal{G}$ if $\sigma(X)$ and $\mathcal{G}$ are independent.
+
+## 2.3 General conditional expectations
+### Definition 2.3.1
+Let $(\Omega, \mathcal{F}, \mathbb{P})$ be a probability space, let $\mathcal{G}$ be a sub-$\sigma$-algebra of $\mathcal{F}$, and let $X$ be a random variable that is either nonnegative or integrable. The conditional expectation of $X$ given $\mathcal{G}$, denoted $\mathbb{E}[X|\mathcal{G}]$, is any random variable that satisfies
+
+- (i) (Measurability) $\mathbb{E}[X|\mathcal{G}]$ is $\mathcal{G}$-measurable, and
+- (ii) (Partial averaging)
+$$
+\int_A\mathbb{E}[X|\mathcal{G}](\omega)\mathrm{d}\mathbb{P}(\omega) =  \int_A X(\omega)\mathrm{d}\mathbb{P}(\omega) \enspace \forall A \in \mathcal{G}. \tag{2.3.17}
+$$
+If $\mathcal{G}$ is the $\sigma$-algebra generated by some other random variable $W$ (i.e. $\mathcal{G} = \sigma(W)$), $\mathbb{E}[X|W]$ is used rather than $\mathbb{E}[X|\sigma(W)]$.
+
+Note that $\mathbb{E}[X|\mathcal{G}]$ is an unbiased estimator of $X$:
+$$
+\mathbb{E}\big(\mathbb{E}[X|\mathcal{G}]\big) = \mathbb{E}X. \tag{2.3.25}
+$$
+This is just $(2.3.17)$ with $A = \Omega$.
+
+### Lemma 2.3.4 Independence
+Let $(\Omega, \mathcal{F}, \mathbb{P})$ be a probability space, let $\mathcal{G}$ be a sub-$\sigma$-algebra of $\mathcal{F}$, Suppose the random variables $X_1, \dots, X_K$ are $\mathcal{G}$-measurable and the random variables $Y_1, \dots, Y_L$ are independent of $\mathcal{G}$. Let $f(x_1, \dots, x_K, y_1, \dots, y_L)$ be a function of the dummy variables $x_1,\dots,x_K$ and $y_1,\dots,y_L$, and define
+$$
+g(x_1,\dots,x_K) = \mathbb{E}f(x_1,\dots,x_K, Y_1,\dots, Y_L). \tag{2.3.27}
+$$
+Then
+$$
+\mathbb{E}\big[f(X_1,\dots,X_K, Y_1,\dots, Y_L)\big|\mathcal{G}\big] = g(X_1,\dots,X_K). \tag{2.3.28}
+$$
+Meaning: $\mathcal{G}$ is sufficient to determine the values of $X_1, \dots, X_K$, so hold those as constants and integrate out $Y_1, \dots, Y_L$.
+
+### Definition 2.3.6 
+Let $(\Omega, \mathcal{F}, \mathbb{P})$ be a probability space, let $T > 0$ be fixed, and let $\mathcal{F}(t), \, 0 \le t \le T$, be a filtration of sub-$\sigma$-algebras of $\mathcal{F}$. Consider an adapted stochastic process $X(t), \, 0 \le t \le T$. Assume $\forall s,t$ s.t. $0 \le s \le t \le T$ and $\forall f > 0$ Borel-measurable function, there's another Borel-measurable function $g$ s.t.
+$$
+\mathbb{E}[f(X(t))|\mathcal{F}(s)] = g(X(s)). \tag{2.3.29}
+$$
+Then $X$ is a Markov process.
+
+Note $f$ can depend on $t$ and $g$ can depend on $s$. This can be rewritten as
+$$
+\mathbb{E}[f(t, X(t))|\mathcal{F}(s)] = g(s, X(s)), \enspace 0 \le s \le t \le T. \tag{2.3.30}
+$$
+Meaning if we know $f(t,x)$ then $f(s,x)$ can be determined by the partial differential equation.
+
 
 # 3 Brownian Motion
 ## 3.2 Scaled random walks
@@ -345,6 +387,12 @@ Let $W$ be a Brownian motion. Then $[W,W](T)=T, \,\forall T \ge 0$ almost surely
 Informally
 $$
 \mathrm{d}W(t)\mathrm{d}W(t) = \mathrm{d}t, \tag{3.4.10} 
+$$
+
+### 3.4.3 Volatility of geometric Brownian motion
+Let $\alpha$ and $\sigma > 0$ be constants, and define the *geometric Brownian motion*
+$$
+S(t) = S(0)\exp\bigg\{\sigma W(t) + \bigg(\alpha-\frac{1}{2}\sigma^2\bigg)t\bigg\}.
 $$
 
 # 4 Stochastic Calculus
@@ -467,7 +515,8 @@ $$
 = & f\big(0, X(0)\big) + \int_0^Tf_t\big(t, X(t)\big) \mathrm{d} t \\
 & + \int_0^T f_x\big(t,X(t)\big) \mathrm{d}X(t) + \frac{1}{2} \int_0^T f_{xx}\big(t,X(t)\big) \mathrm{d}[X,X](t) \\
 = & f\big(0, X(0)\big) + \int_0^Tf_t\big(t, X(t)\big) \mathrm{d} t \\
-& + \int_0^T f_x\big(t,X(t)\big) \Delta(t)\mathrm{d}W(t) + \int_0^Tf_x\big(t,X(t)\big)\Theta(t)\mathrm{d}t + \frac{1}{2} \int_0^T f_{xx}\big(t,X(t)\big) \Delta^2(t)\mathrm{d}t. \tag{4.4.22}
+& + \int_0^T f_x\big(t,X(t)\big) \Delta(t)\mathrm{d}W(t) + \int_0^Tf_x\big(t,X(t)\big)\Theta(t)\mathrm{d}t \\
+& + \frac{1}{2} \int_0^T f_{xx}\big(t,X(t)\big) \Delta^2(t)\mathrm{d}t. \tag{4.4.22}
 \end{align*}
 $$
 
@@ -476,6 +525,30 @@ Differential notation of $(4.4.22)$
 $$
 \mathrm{d}f\big(t,X(t)\big) = f_t\big(t,X(t)\big)\mathrm{d}t+f_x\big(t,X(t)\big)\mathrm{d}X(t) + \frac{1}{2}f_{xx}\big(t, X(t)\big)\mathrm{d}X(t)\,\mathrm{d}X(t). \quad(4.4.23)
 $$
+
+### Example 4.4.8 Generalized geometric Brownian motion
+Let $W(t), \, t \ge 0$, be a Brownian motion, Let $\mathcal{F}(t), \, t\ge 0$, be an associated filtration, and let $\alpha(t)$ and $\sigma(t)$ be adapted processes. Define the Ito process
+$$
+X(t) = \int_0^t\sigma(s)\mathrm{d}W(s) + \int_0^t\bigg(\alpha(s) - \frac{1}{2}\sigma^2(s)\bigg)\mathrm{d}s. \tag{4.4.25}
+$$
+Then
+$$
+\mathrm{d}X(t) = \sigma(t)\mathrm{d}W(t) + \bigg(\alpha(t) - \frac{1}{2}\alpha^2(t)\bigg)\mathrm{d}t,
+$$
+and $\mathrm{d}X(t)\mathrm{d}X(t) = \sigma^2(t)\mathrm{d}t$.
+
+Consider an asset price process given by
+
+$$
+S(t) = S(0)e^{X(t)} = S(0)\exp\bigg\{\int_0^t\sigma(s)\mathrm{d}W(s) + \int_0^t \bigg(\alpha(s)-\frac{1}{2}\sigma^2(s)\bigg)\mathrm{d}s\bigg\}, \tag{4.4.26}
+$$
+
+By $S(t) = f\big(X(t)\big), \, f(x) = S(0)e^x$,
+$$
+\mathrm{d}S(t) = \alpha(t)S(t)\mathrm{d}t + \sigma(t)S(t)\mathrm{d}W(t). \tag{4.4.27}
+$$
+The asset price $S(t)$ has instantaneous mean rate of return $\alpha(t)$ and volatility $\sigma(t)$ (both allowed to be time varying and random).
+
 
 ### Theorem 4.4.9 Ito integral for a deterministic integrand
 Let $W(s), s \ge 0$ be a Brownian motion, and let $\Delta(s)$ be a nonrandom *function of time*. Define $I(t) = \int_0^t\Delta(s)\mathrm{d}W(s)$. $\forall t \ge 0$, the random variable $I(t) \sim \mathcal{N}\big(0, \int_0^t\Delta(s)\mathrm{d}s\big)$.
@@ -489,7 +562,7 @@ $$
 Remainder of the portfolio $X(t) - \Delta(t)S(t)$ is invested into the money market. Differential of portfolio value:
 $$
 \begin{align*}
-\mathrm{d}X(t) & = \Delta(t)\mathrm{d}S(t)+r\big(X(t)-\Delta(t)s(t)\big)\mathrm{d}t \\
+\mathrm{d}X(t) & = \Delta(t)\mathrm{d}S(t)+r\big(X(t)-\Delta(t)S(t)\big)\mathrm{d}t \\
 & = rX(t)\mathrm{d}t+\Delta(t)(\alpha-r)S(t)\mathrm{d}t+\Delta(t)\sigma S(t)\mathrm{d}W(t). \tag{4.5.2}
 \end{align*}
 $$
@@ -694,7 +767,138 @@ $$
 # 5 Risk Neutral Pricing
 ## 5.2 Risk Neutral Measure
 ### 5.2.1 Girsanov's theorem for a single Brownian motion
-Define the *Radon-Nikodym derivative process*
+For a probability space $(\Omega, \mathcal{F}, \mathbb{P})$, and a filtration $\mathcal{F}(t), 0 \le t \le T$. Suppose $Z > 0$ almost surely is a random variable satisfying $\mathbb{E}Z=1$, and define $\mathbb{\widetilde{P}}$ by theorem $(1.6.1)$, 
+
+define the *Radon-Nikodym derivative process*
 $$
 Z(t) = \mathbb{E}[Z|\mathcal{F}(t)], \enspace 0 \le t \le T. \tag{5.2.6}
 $$
+
+### Lemma 5.2.1
+Let $t \in [0, T]$ be given and let $Y$ be an $\mathcal{F}(t)$-measurable random variable. Then
+$$
+\mathbb{\widetilde{E}}Y=\mathbb{E}[YZ(t)]. \tag{5.2.8}
+$$
+
+### Lemma 5.2.2
+Let $s,t \in [0, T]$ be given and let $Y$ be an $\mathcal{F}(t)$-measurable random variable. Then
+$$
+\mathbb{\widetilde{E}}[Y|\mathcal{F}(s)]=\frac{1}{Z(s)}\mathbb{E}[YZ(t)|\mathcal{F}(s)]. \tag{5.2.9}
+$$
+
+### Theorem 5.2.3 Girsanov, one dimension
+Let $W(t), \, 0 \le t \le T$, be a Brownian motion on a probability space $(\Omega, \mathcal{F}, \mathbb{P})$, and let $\mathcal{F}(t), \, 0 \le t \le T$, be a filtration for this Brownian motion. Let $\Theta(t), \, 0 \le t \le T$, be an adapted process. Define
+$$
+Z(t) = \exp \bigg\{-\int_0^t\Theta(y)\mathrm{d}W(u) - \frac{1}{2}\int_0^t\Theta^2(u)\mathrm{d}u\bigg\}, \tag{5.2.11}
+$$
+$$
+\widetilde{W}(t) = W(t) + \int_0^t\Theta(u)\mathrm{d}u, \tag{5.2.12}
+$$
+and assume that
+$$
+\mathbb{E}\int_0^T\Theta^2(u)Z^2(u)\mathrm{d}u < \infty. \tag{5.2.13}
+$$
+Set $Z = Z(T)$. Then $\mathbb{E}Z = 1$ and under the probability measure $\mathbb{\widetilde{P}}$ given by Theorem $(1.6.1)$, the process $\widetilde{W}(t), \, 0 \le t \le T$, is a Brownian motion.
+
+### 5.2.2 Stock under the risk-neutral measure
+Consider the stock price process whose differential is (see $(4.4.27)$)
+$$
+\mathrm{d}S(t) = \alpha(t)S(t)\mathrm{d}t + \sigma(t)S(t)\mathrm{d}W(t), \enspace 0 \le t \le T. \tag{5.2.15}
+$$
+Or equivalently (see $(4.4.26)$)
+
+$$
+S(t) = S(0)\exp\bigg\{\int_0^t\sigma(s)\mathrm{d}W(s) + \int_0^t \bigg(\alpha(s)-\frac{1}{2}\sigma^2(s)\bigg)\mathrm{d}s\bigg\}. \tag{5.2.16}
+$$
+
+In addtion, suppose there's an adapted interest rate process $R(t)$. Define the *discount process*
+$$
+D(t) = \exp\bigg(-\int_0^tR(s)\mathrm{d}s\bigg) \tag{5.2.17}
+$$
+$$
+\mathrm{d}D(t) = -R(t)D(t)\mathrm{d}t. \tag{5.2.18}
+$$
+Observe that $D(t)$ is random but has no $\mathrm{d}W(t)$ term, quadratic variation.
+
+The discounted stock price process is
+$$
+D(t)S(t) = S(0)\exp \bigg\{\int_0^t\sigma(s)\mathrm{d}W(s) + \int_0^t\Big(\alpha(s)-R(s)-\frac{1}{2}\sigma^2(s)\Big)\mathrm{d}s\bigg\}, \tag{5.2.19}
+$$
+and the differential is
+$$
+\begin{align*}
+\mathrm{d}\big(D(t)S(t)\big) & = \big(\alpha(t)-R(t)\big)D(t)S(t)\mathrm{d}t+\sigma(t)D(t)S(t)\mathrm{d}W(t) \\
+& = \sigma(t)D(t)S(t)[\Theta(t)\mathrm{d}t+\mathrm{d}W(t)],
+\end{align*}
+\tag{5.2.20}
+$$
+where the *market price of risk* is defined to be
+$$
+\Theta(t) = \frac{\alpha(t)-R(t)}{\sigma(t)}. \tag{5.2.21}
+$$
+
+Introduce the probability $\mathbb{\widetilde{P}}$ defined in Girsanov's Theorem 5.2.3, which uses the market price of risk $\Theta(t)$ given by $(5.2.21)$. In terms of the Brownian motion $\widetilde{W}(t)$ of that theorem, $(5.2.20)$ may be rewritten as:
+$$
+\mathrm{d}\big(D(t)S(t)\big) = \sigma(t)D(t)S(t)\mathrm{d}\widetilde{W}(t). \tag{5.2.22}
+$$
+Call $\mathbb{\widetilde{P}}$ the measure defined in Girsanov's Theorem, the *risk-neutral measure* because it's equivalent to the original measure $\mathbb{P}$ and it renders the discounted stock price $D(t)S(t)$ into a martingale:
+$$
+D(t)S(t) = S(0) + \int_0^t\sigma(u)D(u)S(u)\mathrm{d}\widetilde{W}(u),
+$$
+and under $\mathbb{\widetilde{P}}$ the process $\int_0^t\sigma(u)D(u)S(u)\mathrm{d}\widetilde{W}(u)$ is an Ito integral and hence a martingale.
+
+The undiscounted stock price $S(t)$ has mean rate of return equal to the interest rate under $\mathbb{\widetilde{P}}$. By using $\mathrm{d}W(t) = -\Theta(t)\mathrm{d}t+\mathrm{d}\widetilde{W}(t)$ on $(5.2.15)$, it becomes
+$$
+\mathrm{d}S(t) = R(t)S(t)\mathrm{d}t + \sigma(t)S(t) \mathrm{d}\widetilde{W}(t). \tag{5.2.23}
+$$
+By replacing $\int_0^t \sigma(s)\mathrm{d}W(s)$ with $\int_0^t\sigma(s)\mathrm{d}\widetilde{W}(s) - \int_0^t\big(\alpha(s)-R(s)\big)\mathrm{d}s$ in $(5.2.16)$,
+$$
+S(t) = S(0)\exp\bigg\{\int_0^t\sigma(s)\mathrm{d}\widetilde{W}(s) + \int_0^t \Big(R(s)-\frac{1}{2}\sigma^2(s)\Big)\mathrm{d}s\bigg\}. \tag{5.2.24}
+$$
+
+Changing the actual measure $\mathbb{P}$ to the risk-neutral measure $\mathbb{\widetilde{P}}$ changes the mean rate of return of the stock but not the volatility. This effectively puts more probability on paths with lower return if $\alpha(t) > R(t)$ so that mean rate of return is reduced from $\alpha(t)$ to $R(t)$.
+
+### 5.2.3 Value of portfolio process under the risk-neutral measure
+With initial capital $X(0)$, and $\forall t \in [0, T]$, hold $\Delta(t)$ shares of stock, investing or borrowing at the interest rate $R(t)$ as necessary to finance this. Similar to $(4.5.2)$, 
+$$
+\begin{align*}
+\mathrm{d}X(t) & = \Delta(t)\mathrm{d}S(t)+R(t)\big(X(t)-\Delta(t)S(t)\big)\mathrm{d}t \\
+& = R(t)X(t)\mathrm{d}t + \Delta(t)\sigma(t)S(t)[\Theta(t)\mathrm{d}t+\mathrm{d}W(t)].
+\end{align*}
+ \tag{5.2.25}
+$$
+Ito's product rule, $(5.2.18)$ and $(5.2.20)$ imply
+$$
+\begin{align*}
+\mathrm{d}\big(D(t)X(t)\big) & = \Delta(t)\sigma(t)D(t)S(t)[\Theta(t)\mathrm{d}t+\mathrm{d}W(t)] \\
+& = \Delta(t)\mathrm{d}\big(D(t)S(t)\big).
+\end{align*}
+\tag{5.2.26}
+$$
+Using $(5.2.22)$, this can be rewritten as
+$$
+\mathrm{d}\big(D(t)X(t)\big)=\Delta(t)\sigma(t)D(t)S(t)\mathrm{d}\widetilde{W}(t). \tag{5.2.27}
+$$
+Changes in the discounted value of the portfolio are entirely due to fluctuations in the discounted stock price. The two investment options are
+- (1) invest in the money market with rate of return $R(t)$ or
+- (2) invest in a stock with mean rate of return $R(t)$ under $\mathbb{\widetilde{P}}$
+
+
+### 5.2.4 Pricing under the risk-neutral measure
+Let $V(T)$ be a $\mathcal{F}(T)$-measurable random variable, representing the payoff at time $T$ of a derivative security ($\mathcal{F}(T)$-measurable means the payoff can be path-dependent, i.e. to depend on anything that occurs between time $0$ and $T$). We want to know what inital capital $X(0)$ and portfolio process $\Delta(t), \, 0 \le t \le T$, to hedge a short position in the derivative security:
+$$
+X(T) = V(T) \enspace \textrm{almost surely.} \tag{5.2.28}
+$$
+Once this has been done (see next section), $D(t)X(t)$ is martingale under $\mathbb{\widetilde{P}}$ implies
+$$
+D(t)X(t) = \mathbb{\widetilde{E}}[D(T)X(T)|\mathcal{F}(t)] = \mathbb{\widetilde{E}}[D(T)V(T)|\mathcal{F}(t)]. \tag{5.2.29}
+$$
+The value $X(t)$ of the hedging portfolio in $(5.2.29)$ is the capital needed at time $t$ to hedge the short position in the derivative security with payoff $V(T)$. Hence, call this the *price* $V(t)$ of the derivative security at time $t$, and $(5.2.29)$ becomes
+$$
+D(t)V(t) = \mathbb{\widetilde{E}}[D(T)V(T)|\mathcal{F}(t)], \, 0 \le t \le T \tag{5.2.30}
+$$
+Dividing both sides with $D(t)$ (allowed as it's $\mathcal{F}(t)$-measurable), and by definition of $D(t)$, $(5.2.30)$ becomes
+$$
+V(t) = \mathbb{\widetilde{E}}\bigg[\exp\bigg(-\int_t^T R(u)\mathrm{d}u\bigg)V(t)\bigg|\mathcal{F}(t)\bigg], \enspace 0 \le t \le T. \tag{5.2.31}
+$$
+This is the continuous-time analogue of $(2.4.11)$ of Volume I. Refer both $(5.2.30)$ and $(5.2.31)$ as the **risk-neutral pricing formula** for the continuous-time model.
