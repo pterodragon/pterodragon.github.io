@@ -345,7 +345,7 @@ $$
 ### Theorem 3.2.2
 As $n \rightarrow \infty$, the distribution of $S_n(t)$ in $(3.2.15)$ converges to the distribution of
 $$
-S(t) = S(0)\bigg\{\sigma W(t)-\frac{1}{2}\sigma^{2}t\bigg\}, \tag{3.2.16}
+S(t) = S(0)\exp\bigg\{\sigma W(t)-\frac{1}{2}\sigma^{2}t\bigg\}, \tag{3.2.16}
 $$
 where $W(t) \sim \mathcal{N} (0, t)$
 
