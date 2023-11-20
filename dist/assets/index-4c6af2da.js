@@ -3722,7 +3722,7 @@ $$
 Let $f(t,x) = e^{-rt}x$ and use the Ito-Doeblin formula,
 differential of discounted stock price:
 $$
-\\mathrm{d}\\big(e^{-rt}S(t)\\big) = (\\alpha - r)e^{-rt}S(t)\\mathrm{d}t+\\sigma e^{rt}S(t)\\mathrm{d}W(t). \\tag{4.5.4}
+\\mathrm{d}\\big(e^{-rt}S(t)\\big) = (\\alpha - r)e^{-rt}S(t)\\mathrm{d}t+\\sigma e^{-rt}S(t)\\mathrm{d}W(t). \\tag{4.5.4}
 $$
 Differential of discounted portfolio value:
 $$
