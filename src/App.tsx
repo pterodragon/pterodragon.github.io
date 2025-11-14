@@ -6,6 +6,7 @@ import control_theory_md from './assets/md/control_theory/main.md?raw'
 import control_theory_math_review_md from './assets/md/control_theory/math_review.md?raw'
 import statistics_md from './assets/md/statistics/main.md?raw'
 import stochastic_calculus_md from './assets/md/stochastic_calculus/main.md?raw'
+import game_theory_md from './assets/md/game_theory/main.md?raw'
 import ReactMarkdown from 'react-markdown'
 import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
@@ -25,6 +26,11 @@ const PDE_Md = () => (<article><ReactMarkdown
 /></article>);
 const PDE_math_review_Md = () => (<article><ReactMarkdown
     children={pde_math_review_md}
+    remarkPlugins={[remarkMath]}
+    rehypePlugins={[rehypeKatex]}
+/></article>);
+const GameTheoryMd = () => (<article><ReactMarkdown
+    children={game_theory_md}
     remarkPlugins={[remarkMath]}
     rehypePlugins={[rehypeKatex]}
 /></article>);
@@ -134,6 +140,15 @@ const routes = [
         )
     },
     {
+        path: "/game-theory-md",
+        main: () => <GameTheoryMd />,
+        sidebar: () => (
+            <p>
+                game theory md
+            </p>
+        )
+    },
+    {
         path: "/statistics-md",
         main: () => <StatisticsMd />,
         sidebar: () => (
@@ -181,6 +196,12 @@ export default function App() {
                     </li>
                     <li>
                         <Link to="/statistics-md">Statistics md</Link>
+                    </li>
+                    <li>
+                        <Link to="/stochastic-calculus-md">Stochastic calculus md</Link>
+                    </li>
+                    <li>
+                        <Link to="/game-theory-md">Game theory md</Link>
                     </li>
                 </ul>
                 <Routes>
