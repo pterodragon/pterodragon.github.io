@@ -170,3 +170,62 @@ Clearly an optimal strategy is one-stage unimprovable. The converse is stated ne
 
 ### Theorem 9.1
 A one-stage unimprovable strategy must be optimal.
+
+## 10 Repeated Games
+
+### 10.1 Finitely Repeated Games
+
+### Finitely Repeated Games (Definition 10.1)
+Given a stage-game $G$, $G(T,\delta)$ denotes the **finitely repeated game** in which the stage-game $G$ is played $T$ consecutive times, and $\delta$ is the common discount factor.
+
+### Proposition 10.1 
+By proposition 9.3, if the stage-game of a finitely repeated game has a *unique Nash equilibrium*, then the finitely repeated game has a **unique** subgame-perfect equilibrium.
+
+### 10.2 Infinitely Repeated Games
+
+### 10.2.1 Payoffs
+
+### Present Value (Definition 10.2)
+Given the discount factor $0 < \delta < 1$, the **present value** of an *infinite sequence of payoffs* $\{v_i^t\}_{t=1}^{\infty}$ for player $i$ is:
+$$
+v_i = v_i^1 + \delta v_i^2 + \delta^2 v_i^3 + \cdots + \delta^{t-1}v_i^t + \cdots = \sum_{t=1}^{\infty}\delta^{t-1}v_i^t
+$$
+
+### Average Payoff (Definition 10.3)
+Given $\delta < 1$, the **average payoff** of an *infinite sequence* of payoffs $\{v_i^t\}_{t=1}^{\infty}$ is:
+$$
+\bar{v}_i=(1-\delta)\sum_{t=1}^{\infty}\delta^{t-1}v_i^t
+$$
+
+### 10.2.2 Strategies
+
+### Definition 10.4 
+Consider an infinitely repeated game. Let $H_t$ denote the set of all possible **histories** of length $t$, $h_t \in H_t$, and Let $H = \bigcup_{t-1}^{\infty}H_t$ be the set of all possible histories. A **pure strategy** for player $i$ is a mapping $s_i : H \rightarrow S_i$ that maps histories into actions of the stage-game. Similarly a **behaviorial strategy** of player $i$, $\sigma_i : H \rightarrow \Delta S_i$ maps histories into stochastic choices of actions in each stage.
+
+### 10.3 Subgame-Perfect Equilibria
+
+### Definition 10.5 
+A profile of strategy (pure/behaviorial) (defined for all $i \in N$) is subgame-equilibrium if for any history, the continuation of play dictated by the profile is a Nash equilibrium.
+
+### Proposition 10.2 
+The history-independent Nash strategy, playing the (static) Nash equilibrium every time regardless of history, is a subgame-perfect equilibrium in the repeated game (for $\delta < 1$).
+
+#### Note 
+There might strategies other than the history-independent Nash strategy that are subgame-perfect equilibrium (that depends on the history) like **trim-trigger strategies**.
+
+### Proposition 10.3 
+In an infinitely repeated game, a profile of strategies is a subgame-perfect equilibrium if and only if there is no player and no single history for which the player would gain from deviating. (follows theorem 9.1)
+
+### 10.6 The Folk Theorem 
+
+### Convex hull (Definition 10.7)
+Given a set of vectors $V = {v^1, v^2, \dots, v^n}$ in $\real^n$, the **convex hull** of $V$ is:
+$$
+CoHull(v) = \bigg\{v\in \real^n: \exists (\alpha_1, \dots, \alpha_k) \in \real_{+}^k, \sum_{j=1}^k \alpha_j = 1, v=\sum_{j=1}^k \alpha_j v^j\bigg\}
+$$
+
+### Feasible payoffs 
+The convex hull of a game's payoffs is called the **feasible payoffs**
+
+### The Folk Theorem (Theorem 10.1)
+Let $G$ be a finite, simultaneous-move game of complete information, let $(v_1^*, \dots, v_n^*)$ denote the payoffs from a Nash equilibrium of $G$, and let $(v_1, \dots, v_n)$ be a feasible payoff of $G$. If $v_i > v_i^*, \forall i \in N$, and if $\delta$ is sufficiently close to $1$, then there exists a subgame-perfect equilibrium of the infinitely repeated game $G(\delta)$ that achieves an average payoff arbitrarily close to $(v_1, \dots, v_n)$.
