@@ -229,3 +229,46 @@ The convex hull of a game's payoffs is called the **feasible payoffs**
 
 ### The Folk Theorem (Theorem 10.1)
 Let $G$ be a finite, simultaneous-move game of complete information, let $(v_1^*, \dots, v_n^*)$ denote the payoffs from a Nash equilibrium of $G$, and let $(v_1, \dots, v_n)$ be a feasible payoff of $G$. If $v_i > v_i^*, \forall i \in N$, and if $\delta$ is sufficiently close to $1$, then there exists a subgame-perfect equilibrium of the infinitely repeated game $G(\delta)$ that achieves an average payoff arbitrarily close to $(v_1, \dots, v_n)$.
+
+## 11 Strategic Bargaining
+
+### 11.2 Finitely Many Rounds of Bargaining
+
+The bargaining game of $T < \infty$ periods has the same stages of one of the player proposing a split of the "pie" and other players accepting or rejecting the offer. If the offer is not accepted by the majority then the next stage-game is played with some other player proposing a different split of the one-stage discounted pie.
+
+### Proposition 11.3 
+In a bargaining game, any subgame-perfect equilibrium must have the players reach an agreement in the first round 
+
+## 12 Bayesian Games 
+
+### 12.1 Strategic Representation of Bayesian Games 
+
+### 12.1.1 Players, Actions, Information, and Preferences
+
+### Static Bayesian game of incomplete information (Definition 12.1)
+The normal-form representation of an $n$-player **static Bayesian game of incomplete information** is 
+$$
+\lang N, \{A_i\}_{i=1}^n, \{\Theta_i\}_{i=1}^n, \{v_i(\cdot;\theta_i),\theta_i \in \Theta\}_{i=1}^n, \{\phi_i\}_{i=1}^n \rang
+$$
+$N = \{1, 2, \dots, n\}$ is the set of players;
+
+$A_i$ is the *action set* of player $i$;
+
+$\Theta_i = \{\theta_{i1},\theta_{i2},\dots,\theta_{ik_i}\}$ is the *type space* of player $i$;
+
+$v_i: A \times \Theta_i \rightarrow \real$ is the type-dependent payoff function of player $i$, where $A \equiv A_1 \times A_2 \times \dots \times A_n$
+
+$\phi_i$ describes the *belief* of player $i$ with respect to the uncertainty over the other players' types, i.e. $\phi_i(\theta_{-i}|\theta_i)$ is the posterior conditional distribution on $\theta_{-i}$ given that $i$ knows his type is $\theta_i$
+
+### 12.1.3 Strategies and Bayesian Nash Equilibrium 
+
+### Pure strategy / Mixed strategy in a static Bayesian game (Definition 12.3)
+A **pure strategy** for player $i$ is a function $s_i: \Theta_i \rightarrow A_i$ that specifies a pure action $s_i(\theta_i)$ that player $i$ will choose when his type is $\theta_i$. A **mixed strategy** is a probability distribution over a player's pure strategies.
+
+### Pure-strategy Bayesian Nash Equilibrium (Definition 12.4)
+A strategy profile $s^* = (s_1^*(\cdot), s_2^*(\cdot), \dots, s_n^*(\cdot))$ is a **pure-strategy Bayesian Nash Equilibrium** if, for every player $i$, for each of player $i$'s types $\theta_i \in \Theta_i$, and for every $a_i \in A$, $s_i^*(\cdot)$ solves 
+$$
+\sum_{\theta_{-i} \in \Theta_{-i}} \phi_i (\theta_{-i} | \theta_i) v_i(\blue{s_i^*(\theta_i)},s_{-i}^*(\theta_{-i});\theta_i) \ge 
+
+\sum_{\theta_{-i} \in \Theta_{-i}} \phi_i (\theta_{-i} | \theta_i) v_i(\blue{a_i},s_{-i}^*(\theta_{-i});\theta_i) 
+$$
