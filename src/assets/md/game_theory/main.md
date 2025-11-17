@@ -272,3 +272,124 @@ $$
 
 \sum_{\theta_{-i} \in \Theta_{-i}} \phi_i (\theta_{-i} | \theta_i) v_i(\blue{a_i},s_{-i}^*(\theta_{-i});\theta_i) 
 $$
+
+### 13 Auctions and Competitive Bidding 
+
+### 13.1 Independent Private Values 
+In **private values** setting, the willingness to pay depends on the person's own type, and this is private information. 
+
+In **common-values** setting, the preferences of some players may depend on the types of other players
+
+In **independent private values** (IPV) setting, the type of each person is drawn from the same distribution independently from each other.
+
+### Summary
+
+- The second-price sealed-bid auction is related to the English auction (incremental bids) and they are strategically equivalent. There is a weakly dominant strategy which is to bid the true valuation for each player. This holds true in the IPV case, and even when types are correlated (but private).
+- In first-price sealed-bid auction (or the related Dutch auction), bidding the true valuation is a dominated strategy (not equilibrium). Players will try to shade their valuation to obtain positive expected value. The exact computation of equilibrium relies on assumptions.
+- The **revenue equivalence theorem** states some conditions of auctions that yield the same expected revenue. The English auction and the Dutch auction have the same expected revenue following those conditions.
+- If the auction is one of common values then players must take into account the downsides of the **winner's curse** and bid accordingly to avoid overpaying for the object. In such setting, a player wins when his signal is the most optimistic and thus overvaluing and overpaying if he does not take this into account.
+
+## 14 Mechanism Design 
+
+### 14.1 Setup: Mechanism as Bayesian Games 
+
+### 14.1.1 The Players
+Each player $i$ privately observes a signal (his type) $\theta_i \in \Theta_i$ which determines his preference. $\theta = (\theta_1, \theta_2, \dots, \theta_n)$ is the **state of the world** given the realization of $\theta_i$, and this is drawn randomly from the state space $\Theta \equiv \Theta_1 \times \Theta_2 \times \cdots \times \Theta_n$, according to some prior distribution $\phi(\cdot)$ over $\Theta$. The set $X$ is defined as the set of **public** alternatives and assume that these have "money-equivalent" values. The payoff to player $i$ is given by 
+$$
+v_i(x,m_i,\theta_i) = u_i(x,\theta_i) + m_i
+$$
+This class of preferences is called **quasilinear preferences** as money $m_i \in \real$ is added linearly to some function of other outcomes.
+
+The **outcomes** is represented by $y = (x,m_1,\dots,m_n)$, the choice of the public alternative with monetary amounts that each player gets. 
+
+Assume the case of *private values* in which player $i$'s payoff does not depend directly on other players' private information. 
+
+### 14.1.2 The Mechanism Designer 
+Assume that monetary payments have to be self-financed: $\sum_{i=1}^n m_i \le 0$, a negative value means the mechanism designer extracts money from the players.
+
+The set of outcome is 
+$$
+Y = \{(x,m_1, \dots, m_n): x\in X, m_i \in \, \real \forall i \in N, \sum_{i=1}^I m_i \le 0\}
+$$
+
+The mechanism designer's objective is given by a **choice rule**
+
+$$
+f(\theta) = (x(\theta), m_1(\theta), \dots, m_n(\theta)) \quad x(\theta) \in X, \sum_{i=1}^I m_i(\theta) \le 0
+$$
+$x(\theta)$ is the **decision rule**, $(m_1(\theta), \dots, m_n(\theta))$ is the **transfer rule**
+
+### 14.1.3 The Mechanism Game 
+
+### Mechanism (Definition 14.1)
+A **mechanism**, $\Gamma = \lang A_1, A_2, \dots, A_n, g(\cdot) \rang$ is a collection of $n$ action sets $A_1, A_2, \dots, A_n$ and an outcome function $g: A_1 \times A_2 \times \cdots \times A_n \rightarrow Y$. A pure strategy for player $i$ in the mechanism $\Gamma$ is a function that maps types into actions, $s_i: \Theta_i \rightarrow A_i$. The payoffs of the players are given by $v_i(g(s), \theta_i)$.
+
+### Bayesian Nash Equilibrium (Definition 14.2)
+The strategy profile $s^*(\cdot) = s^*_1(\cdot), \dots, s^*_n(\cdot))$ is a **Bayesian Nash equilibrium** of the mechanism $\Gamma = \lang A_1, A_2, \dots, A_n, g(\cdot) \rang$ if for every $i \in N$ and for every $\theta_i \in \Theta_i$
+$$
+E_{\theta_{-i}}[v_i(g(\blue{s_i^*(\theta_i)}, s_{-i}^*(\theta_{-i})), \theta_i) | \theta_i] \\
+\ge E_{\theta_{-i}}[v_i(g(\blue{a_i'}, s_{-i}^*(\theta_{-i})), \theta_i) | \theta_i] \quad \forall a_i' \in A_i
+$$
+meaning following that strategy profile and believing other players are also following that, the expected payoff for every player is maximized regardless of his type.
+
+### Mechanism implementation (Definition 14.3) 
+A mechanism $\Gamma$ **implements** the choice rule $f(\cdot)$ if there exists a Bayesian Nash equilibrium of the mechanism $\Gamma$, $(s^*_1(\theta_1), \dots, s^*_n(\theta_n))$, s.t. $g(s^*_1(\theta_1), \dots, s^*_n(\theta_n)) = f(\theta)$ for all $\theta \in \Theta$
+
+The idea is that the mechanism designer wants to know $\theta$ and choose the outcome $f(\theta)$. Using the mechanism with the equilibrium strategies, the players choose actions that commensurate with that strategies and through the outcome function $g(\cdot)$ the mechanism does what the mechanism designer wanted to do because $a$ is chosen s.t. $g(a) = f(\theta) \, \forall \theta$
+
+Remark: this is **partial implementation** where there might be undesirable equilibrium outcomes
+
+### 14.2 The Revelation Principle
+
+### Direct Revelation Mechanism (Definition 14.4)
+$\Gamma = \lang \Theta_1, \dots, \Theta_n, f(\cdot) \rang$ is a **direct revelation mechanism** for choice rule $f(\cdot)$ if $A_i = \Theta_i \, \forall i \in N$ and $g(\theta) = f(\theta) \, \forall \theta \in \Theta$ 
+
+### Truthfully implementable in Bayesian Nash Equilibrium (Definition 14.5)
+The choice rule $f(\cdot)$ is **truthfully implementable in Bayesian Nash equilibrium** if for all $\theta$ the direct revelation mechanism has a Bayesian Nash equilibrium $s_i^*(\theta_i) = \theta_i$ for all $i$, i.e. 
+$$
+E_{\theta_{-i}}[v_i(f(\blue{\theta_i}, \theta_{-i})), \theta_i) | \theta_i] \\
+\ge E_{\theta_{-i}}[v_i(f(\blue{\hat{\theta}_i}, \theta_{-i})), \theta_i) | \theta_i] \quad \forall \hat{\theta}_i \in \Theta_i
+$$
+
+meaning players truthfully telling their private values $\theta$ is a Bayesian Nash equilibrium strategy in the direct revelation mechanism. 
+
+### The Revelation Principle for Bayesian Nash Implementation (Proposition 14.1) 
+A choice rule $f(\cdot)$ is implementable in Bayesian Nash equilibrium if and only if it is truthfully implementable in Bayesian Nash equilibrium.
+
+This basically says if the mechanism designer cannot implement $f(\cdot)$ then there is no mechanism in the world that can. The reason is that for any mechanism, the players can compute $s_i^*(\theta_i)$ themselves and will not lie as the computed strategy is optimal, and this computation work can actually be done by the mechanism designer in a new mechanism instead. But by construction this new mechanism takes the truthful value of $\theta$ from the players so this is the direct revelation mechanism.
+
+### 14.3 Dominant Strategies and Vickrey-Clarke-Groves Mechanisms
+
+### 14.3.1 Dominant Strategy Implementation 
+
+### Dominant Strategy Equilibrium (Definition 14.6)
+The strategy profile $s^*(\cdot) = (s^*_1(\cdot), \dots ,s^*_n(\cdot))$ is a **dominant strategy equilibrium** of the mechanism $\Gamma = \lang A_1, A_2, \dots, A_n, g(\cdot) \rang$ if for every $i \in N$ and for every $\theta_i \in \Theta_i$ 
+$$
+v_i(g(\blue{s_i^*(\theta)},a_{-i}), \theta) \ge
+v_i(g(\blue{a_i'},a_{-i}), \theta) \quad \forall a_i' \in A_i, \forall a_{-i} \in A_{-i}
+$$
+
+meaning each player has a strategy that maximizes his expected payoff regardless of what strategies he expects others to play.
+
+### 14.3.2 Vickrey-Clarke-Groves Mechanisms 
+
+### Proposition 14.2 
+In the quasilinear environment, given a state of the world $\theta \in \Theta$, an alternative $x^* \in X$ is Pareto optimal if and only if it is a solution to 
+$$
+\max_{x \in X} \sum_{i=1}^I u_i(x,\theta_i)
+$$
+This is because money transfer between the players do not matter to Pareto efficiency
+
+### First-best decision rule 
+A rule $x^*(\cdot)$ is the **first-best decision rule** if for all $\theta \in \Theta$, $x^*(\theta)$ is Pareto optimal
+
+### Vickrey-Clarke-Groves mechanisms (Definition 14.7)
+Given announcement $\hat{\theta}$, the choice rule $f(\hat{\theta}) = (x^*(\hat{\theta}), m_1(\hat{\theta}), \dots, m_n(\hat{\theta}))$ is a **Vickrey-Clarke-Groves (VCG) mechanism** if $x^*(\cdot)$ is the first-best decision rule and if for all $i \in N$ 
+$$
+m_i(\hat{\theta}) = \sum_{j\ne i} u_j(x^*(\hat{\theta}_i, \hat{\theta}_{-i}), \hat{\theta}_j) + h_i(\hat{\theta}_{-i})
+$$
+
+### Proposition 14.3 
+Any VCG mechanism is truthfully implementable in dominant strategies.
+
+Note: The stipulated monetary transfer rule internalizes the externality (accounts for the public good). It does not matter if the players are telling the truth $\theta_i$, but the players' part of the transfer is calculated as if they are telling the truth. The consequence is that player $i$ is faced with a choice as if other players are telling the truth. Thus, this is as if the players are choosing the ultimate decision $x$.
