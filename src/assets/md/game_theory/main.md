@@ -393,3 +393,90 @@ $$
 Any VCG mechanism is truthfully implementable in dominant strategies.
 
 Note: The stipulated monetary transfer rule internalizes the externality (accounts for the public good). It does not matter if the players are telling the truth $\theta_i$, but the players' part of the transfer is calculated as if they are telling the truth. The consequence is that player $i$ is faced with a choice as if other players are telling the truth. Thus, this is as if the players are choosing the ultimate decision $x$.
+
+## 15 Sequential Rationality with Incomplete Information 
+
+### 15.2 Perfect Bayesian Equilibrium
+
+### System of beliefs (Definition 15.2)
+A **system of beliefs** $\mu$ of an extensive-form game assigns a probability distribution over decision nodes to every information set. That is, for every information set $h \in H$ and every decision node $x \in h, \mu(x) \in [0,1]$ is the probability that player $i$ who moves in information set $h$ assigns to his being at $x$, where $\sum_{x\in h} \mu(x) = 1$ for every $h \in H$.
+
+### Requirements of sequential rationality in games of incomplete information 
+
+### Requirement 15.1
+Every player will have a well-defined belief over where he is in each of his information sets, i.e. the game will have a **system of beliefs**.
+
+### Requirement 15.2 
+Let $\sigma^* = (\sigma_1^*, \dots, \sigma_n^*)$ be a Bayesian Nash equilibrium profile of strategies. We require that in all information sets beliefs that are *on the equilibrium path* be consistent with *Bayes' rule*.
+
+### Requirement 15.3 
+At information sets that are *off the equilibrium path* any belief can be assigned to which Bayes' rule does not apply.
+
+### Requirement 15.4
+Given their beliefs, players' strategies must be *sequentially rational*. i.e. in every information set players will play a best response to their beliefs.
+
+Consider player $i$ with beliefs over information sets derived from the beliefs system $\mu$, given player $i$'s opponents playing $\sigma_{-i}$, if $h$ is an information set for player $i$ then he must be true that he is playing a strategy $\sigma_i$ that satisfies
+$$
+E[v_i(\sigma_i,\sigma_{-i},\theta_i)|h,\mu] \ge 
+E[v_i(s_i',\sigma_{-i},\theta_i)|h,\mu] \quad \forall s_i' \in S_i
+$$
+
+### Perfect Bayesian equilibrium (Definition 15.3)
+A Bayesian Nash Equilibrium profile $\sigma^* = (\sigma_1^*, \dots, \sigma_n^*)$ together with a system of belief $\mu$ constitues a **perfect Bayesian equilibrium** for an $n$-player game if they satisfy requirements 15.1-15.4.
+
+### Proposition 15.1 
+If a profile of strategies is a Bayesian Nash equilibrium of a Bayesian game, and that profile induces all the information sets to be reached with positive probability, then the profile together with the system of beliefs uniquely derived from it constitues a perfect Bayesian equilibrium for the Bayesian game.
+
+### 15.3 Sequential Equilibrium
+
+### Consistency (profile of strategies with system of beliefs) (Definition 15.4)
+A profile of strategies $\sigma^* = (\sigma_1^*, \dots, \sigma_n^*)$, together with a system of beliefs $\mu^*$, is *consistent* if there exists a sequence of nondegenerative mixed strategies, $\{\sigma^k\}_{k=1}^\infty$, and a sequence of beliefs that are derived from each $\sigma^k$ according to Bayes' rule, $\{\mu^k\}_{k=1}^\infty$, s.t. $\lim_{k \rightarrow \infty} (\sigma^k, \mu^k) = (\sigma^*, \mu^*)$.
+
+The idea is that nondegenerative mixed strategies (mix all actions with positive probability) cause every information set to be reached with positive probability on the equilibrium path.
+
+### Sequential equilibrium (Definition 15.5)
+A profile of strategies $\sigma^* = (\sigma_1^*, \dots, \sigma_n^*)$, together with a system of beliefs $\mu^*$, is a **sequential equilibrium** if $(\sigma^*, \mu^*)$ is a consistent perfect Bayesian equilibrium.
+
+## 16 Signaling games
+**Signaling games** share a structure that includes the following components:
+1. Nature chooses a type for player 1 that player 2 does not know, but cares about (common values)
+2. Player 1 has a rich action set in the sense that there are at least as many actions as there are types, and each action imposes a different cost on each type.
+3. Player 1 chooses an action first, and player 2 then responds after observing player 1's choice.
+4. Given player 2's belief about player 1's strategy, player 2 updates his belief after observing player 1's choice. Player 2 makes his choice as a best response to his updated beliefs.
+
+There games are called signaling games because of the potential signal that player 1's actions can convey to player 2. If in equilibrium each type of player 1 is playing a different choice then *in equilibrium* the action of player 1 will fully reveal player 1's type to player 2.
+
+These games have two important classes of perfect Bayesian equilibria:
+#### Pooling equilibria
+There are the equilibria in which *all the types of player 1 choose the same action*, thus revealing nothing to player 2. Player 2's beliefs must be derived from Bayes' rule *only* in the information sets that are reached with *positive probability*. In other information sets that are reached with zero probability, player 2 must have beliefs that support his own strategy. The sequentially rational strategy of player 2 given his beliefs is what keeps player 1 from deviating from his pooling strategy.
+#### Separating equilibria
+These are equilibria in which *each type of player 1 chooses a different action*, thus revealing his type in equilibrium to player 2. Player 2's beliefs are thus well defined by Bayes' rule in all the information sets that are reached with positive probability. If there are more actions than types for player 1, then player 2 must have beliefs in the information sets that are not reached (the actions that not type of player 1 chooses), which in turn must support the strategy of player 2. Player 2's strategy supports the strategy of player 1.
+
+### 16.3 Refinements of Perfect Bayesian Equilibrium in Signaling Games 
+
+#### Intuitive criterion 
+Consider a signaling game in which player 1 has private information $\theta \in \Theta$ and chooses actions $a_1 \in A_1$, in the first period, after which player 2 observes his action, forms a posterior belief over player 1's type, and then chooses action $a_2 \in A_2$. Imagine that the set of player 1's type $\Theta$ is finite, and let $\hat{\Theta} \subset \Theta$ be a subset of player 1's types. Let $BR_2(\hat{\Theta}, a_1)$ be the set of best-response actions of player 2 if player 1 has chosen action $a_1 \in A_1$ and the belief $\mu$ of player 2 puts positive probability only on types in the set $\hat{\Theta}$. Formally: 
+$$
+BR_2(\hat{\Theta}, a_1) = \bigcup_{\mu \in \Delta(\Theta)} \argmax_{a_2 \in A_2} \sum_{\theta \in \hat{\Theta}} v_2(a_1, a_2; \theta) \mu(\theta)
+$$
+
+### Bayesian equilibrium failing intuitive Criterion (Definition 16.1)
+A perfect Bayesian equilibrium $\sigma^*$ fails the intuitive criterion if there exists $a_1 \in A_1$, $\theta \in \Theta$, and $\hat{\Theta} \subset \Theta$ s.t. 
+1. $v_1(\sigma^*; \theta) > \max_{a_2\in BR_2(\Theta,a_1)}v_1(a_1, a_2;\theta) \, \forall \theta \in \hat{\Theta}$ 
+2. $v_1(\sigma^*; \theta) < \max_{a_2\in BR_2(\Theta / \hat{\Theta},a_1)}v_1(a_1, a_2;\theta)$ 
+
+Condition (1) states that any type in the subset of types $\hat{\Theta}$ would *never* choose to play $a_1$ because regardless of which type player 2 believes him to be, he would do strictly worse than if he stuck to the equilibrium. 
+
+Condition (2) states that type $\theta$ will do strictly better than the equilibrium by playing $a_1$ if he can convince player 2 that his type is *not* in $\hat{\Theta}$.
+
+## 17 Building reputation 
+Summary:
+- Games of incomplete information can cause rational strategic players to behave in ways that build them a reputation for having certain behavioral characteristics
+- By rational uncertainty about whether players are set in their ways, players are incentivized to cater to long-run benefits rather than choosing the short-run best-response actions.
+- By the above, in finitely repeated games and other dynamic games, grim backward-induction outcome can be avoided and instead high-payoff behavior can persist on very long time horizons.
+
+## 18 Information Transmission and Cheap Talk 
+Summary:
+- In situations characterized by a decision maker who wants to know the private information from an adviser with incongruent preferences, information-transmission or cheap-talk games offer a framework on how much information can be transferred  by the adviser
+- It is not of the interest of the adviser to reveal the information truthfully due to conflicting interests (payoff functions)
+- If the adviser has vast information space, even a small bias between the preferences of the adviser and the decision maker will result in information not being revealed (decision maker not trusting the adviser)
