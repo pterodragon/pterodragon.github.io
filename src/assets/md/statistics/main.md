@@ -1,6 +1,6 @@
 # Statistics
 
-### 2.3 Moments and momemt generating functions
+### 2.3 Moments and moment generating functions
 For $n \in \mathbb{Z}$, the $n$th *moment* of $X$ (or $F_X(x))$, $\mu_n'$ is
 $$
 \mu_n'=\mathrm{E} X^n

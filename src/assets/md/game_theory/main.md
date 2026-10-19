@@ -211,7 +211,7 @@ A profile of strategy (pure/behaviorial) (defined for all $i \in N$) is subgame-
 The history-independent Nash strategy, playing the (static) Nash equilibrium every time regardless of history, is a subgame-perfect equilibrium in the repeated game (for $\delta < 1$).
 
 #### Note 
-There might strategies other than the history-independent Nash strategy that are subgame-perfect equilibrium (that depends on the history) like **trim-trigger strategies**.
+There might strategies other than the history-independent Nash strategy that are subgame-perfect equilibrium (that depends on the history) like **grim-trigger strategies**.
 
 ### Proposition 10.3 
 In an infinitely repeated game, a profile of strategies is a subgame-perfect equilibrium if and only if there is no player and no single history for which the player would gain from deviating. (follows theorem 9.1)
@@ -448,7 +448,7 @@ There games are called signaling games because of the potential signal that play
 
 These games have two important classes of perfect Bayesian equilibria:
 #### Pooling equilibria
-There are the equilibria in which *all the types of player 1 choose the same action*, thus revealing nothing to player 2. Player 2's beliefs must be derived from Bayes' rule *only* in the information sets that are reached with *positive probability*. In other information sets that are reached with zero probability, player 2 must have beliefs that support his own strategy. The sequentially rational strategy of player 2 given his beliefs is what keeps player 1 from deviating from his pooling strategy.
+These are the equilibria in which *all the types of player 1 choose the same action*, thus revealing nothing to player 2. Player 2's beliefs must be derived from Bayes' rule *only* in the information sets that are reached with *positive probability*. In other information sets that are reached with zero probability, player 2 must have beliefs that support his own strategy. The sequentially rational strategy of player 2 given his beliefs is what keeps player 1 from deviating from his pooling strategy.
 #### Separating equilibria
 These are equilibria in which *each type of player 1 chooses a different action*, thus revealing his type in equilibrium to player 2. Player 2's beliefs are thus well defined by Bayes' rule in all the information sets that are reached with positive probability. If there are more actions than types for player 1, then player 2 must have beliefs in the information sets that are not reached (the actions that not type of player 1 chooses), which in turn must support the strategy of player 2. Player 2's strategy supports the strategy of player 1.
 
